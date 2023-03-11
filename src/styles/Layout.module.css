@@ -1,0 +1,20 @@
+.content{
+  margin-top: 0;
+}
+.desk{
+  display:none;
+}
+.mobile{
+  display: flex;
+}
+@media screen and (min-width: 800px) {
+  .desk{
+    display: flex;
+  }
+  .mobile{
+    display: none;
+  }
+  .content{
+    margin-top: 4rem;
+  }
+}

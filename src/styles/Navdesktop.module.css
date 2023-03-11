@@ -1,0 +1,44 @@
+.navbar{
+  background-color: var(--dark-green);
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.icon{
+  width: 1.5rem;
+  height: auto;
+}
+.item{
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--white);
+  transition: color .2s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.item:hover{
+  color: var(--dark);
+}
+.brand{
+  font-size: 1.5rem;
+  margin-left: 4px;
+}
+.btnInfo{
+  cursor: pointer;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  border: none;
+  padding: 0;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+}
+.info{
+  color: var(--dark-green);
+}

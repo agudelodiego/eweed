@@ -1,0 +1,20 @@
+.contenainerBuilding{
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.gear{
+  width: 30vw;
+  height: auto;
+  color: var(--dark-green);
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 800px) {
+  .contenainerBuilding{
+    height: calc(100vh - 4rem);
+  }
+}
