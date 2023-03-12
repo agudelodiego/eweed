@@ -11,6 +11,23 @@
   bottom: 1rem;
   right: 1rem;
   padding: .8rem;
+  z-index: 1000;
+}
+.btnCart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 4.3rem;
+  height: 4.3rem;
+  background-color: var(--dark-green);
+  color: var(--white);
+  border: solid var(--dark-green);
+  position: fixed;
+  bottom: 11rem;
+  right: 1rem;
+  padding: .8rem;
+  z-index: 1000;
 }
 .btnInfo{
   position: fixed;
@@ -21,9 +38,11 @@
   height: 4.3rem;
   border: none;
   border-radius: 50%;
+  z-index: 1000;
 }
 .info{
   color: var(--dark-green);
+  z-index: 900;
 }
 .nav{
   background-color: var(--dark-green);

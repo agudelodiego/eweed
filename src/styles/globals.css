@@ -3,6 +3,7 @@
   --light-green: #e2eceb;
   --dark: #333;
   --white: #fff;
+  --orange: #ed7549;
   --gray: #DBDBDB;
 }
 
@@ -28,6 +29,9 @@ a {
 }
 ul{
   list-style: none;
+}
+.color-orange{
+  color: var(--orange);
 }
 
 

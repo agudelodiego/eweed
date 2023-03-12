@@ -7,6 +7,8 @@
   position: fixed;
   width: 100%;
   top: 0;
+  font-size: 1.3rem;
+  z-index: 1000;
 }
 .icon{
   width: 1.5rem;
@@ -38,7 +40,9 @@
   width: 4.2rem;
   height: 4.2rem;
   border-radius: 50%;
+  z-index: 900;
 }
 .info{
   color: var(--dark-green);
+  z-index: 800;
 }

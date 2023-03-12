@@ -1,7 +1,6 @@
 import Layout from "@/components/Layout"
-import Building from "@/components/Building"
 import Head from "next/head"
-
+import Products from "@/components/Products"
 
 const Index = () => {
   return (
@@ -9,7 +8,7 @@ const Index = () => {
       <Head>
         <meta name="description" content="Compra productos a base de cannabis al mejor precio y con la mejor calidad." />
       </Head>
-      <Building name="Home" />
+      <Products />
     </Layout>
   )
 }
