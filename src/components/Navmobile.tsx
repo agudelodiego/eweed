@@ -7,8 +7,11 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { variants } from "@/utils/variants";
 
+interface Props {
+  products: number
+}
 
-const Navmobile = ()=>{
+const Navmobile = ({products}:Props)=>{
   const [ref, inView] = useInView({ threshold: 0 });
   
   return(
@@ -17,7 +20,7 @@ const Navmobile = ()=>{
       <Link href="/shoppingcart" legacyBehavior>
         <motion.a whileTap={{scale:0.6}} className={`${Nav.btnCart} ${Nav.item}`}>
           <FontAwesomeIcon icon={faShoppingCart} />
-          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-2">{products}</span>
         </motion.a>
       </Link>
       

@@ -24,6 +24,7 @@
 .cartItem_name{
   color: var(--orange);
   font-size: 1.3rem;
+  text-align: center;
 }
 .cartItem_icon{
   width: 1.5rem;
