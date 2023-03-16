@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
-import Building from "@/components/Building"
 import Head from "next/head"
+import Cart from "@/components/Cart"
 
 
 const Shoppingcart = () =>{
@@ -10,7 +10,7 @@ const Shoppingcart = () =>{
         <title>shopping</title>
         <meta name="description" content="carrito de compras eweed" />
       </Head>
-      <Building name="Shopping"/>
+      <Cart />
     </Layout>
   )
 }

@@ -20,8 +20,9 @@ const Navdesktop = () => {
         </div>
 
         <div className="d-flex justify-content-center">
-          <Link href="/shoppingcart" className={Nav.item}>
+          <Link href="/shoppingcart" className={`${Nav.item} ${Nav.cart}`}>
             <FontAwesomeIcon icon={faCartShopping} className={Nav.icon}></FontAwesomeIcon>
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
           </Link>
           <Link href="/profile" className={Nav.item}>
             <FontAwesomeIcon icon={faUser} className={Nav.icon}></FontAwesomeIcon>

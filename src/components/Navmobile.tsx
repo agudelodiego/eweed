@@ -10,13 +10,6 @@ import { variants } from "@/utils/variants";
 
 const Navmobile = ()=>{
   const [ref, inView] = useInView({ threshold: 0 });
-
-  useEffect(() => {
-    if (inView) {
-      console.log("Animate");
-    }
-  }, [inView]);
-
   
   return(
     <>
@@ -24,11 +17,9 @@ const Navmobile = ()=>{
       <Link href="/shoppingcart" legacyBehavior>
         <motion.a whileTap={{scale:0.6}} className={`${Nav.btnCart} ${Nav.item}`}>
           <FontAwesomeIcon icon={faShoppingCart} />
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
         </motion.a>
       </Link>
-      
-
-
       
       <motion.button whileTap={{scale:0.6}} className={Nav.btnIcon} type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
         <FontAwesomeIcon icon={faBars} className={Nav.icon}></FontAwesomeIcon>

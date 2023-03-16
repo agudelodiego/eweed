@@ -4,7 +4,7 @@ import { faCartPlus, faEye, faCartArrowDown } from "@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Product } from "./Products"
+import { Product } from "@chec/commerce.js/types/product"
 
 
 interface Props {
@@ -30,7 +30,7 @@ const ProductCard = ({product}:Props)=>{
       <div className={Style.cardContainer}>
 
       <div className={Style.imageContainer}>
-        <Image width={200} height={200} src={product.image} className={`card-img-top ${Style.image}`} alt="Product image" />
+        <Image width={200} height={200} src={product.image?.url ?? ''} className={`card-img-top ${Style.image}`} alt="Product image" />
       </div>
 
       <div className="card-body">
@@ -40,7 +40,7 @@ const ProductCard = ({product}:Props)=>{
         </span>
 
         <span className={Style.price}>
-          {product.price} - $COP
+          {product.price.formatted_with_code}
         </span>
 
         <div className="d-flex justify-content-evenly pt-4">
