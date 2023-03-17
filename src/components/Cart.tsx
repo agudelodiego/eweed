@@ -1,12 +1,15 @@
-import { CartContext } from "@/context/cart/CartContext"
-import { ProductCart } from "@/context/cart/types"
-import { useContext } from "react"
+import { CartContext } from "@/context/cart/CartProvider"
+import { useContext, useEffect } from "react"
 import CartItem from "./CartItem"
 
 
-const Cart = ()=>{
+const Cart = () => {
 
   const {cartstate} = useContext(CartContext)
+
+  useEffect(()=>{
+    console.log(cartstate)
+  },[])
 
   return(
     <>
@@ -15,12 +18,12 @@ const Cart = ()=>{
       </h1>
       <div className="container d-flex flex-column align-items-center mb-5">
         
-        {cartstate.products.length==0?
-          (<h1 className="text-center">Tu carrito de compras esta vacio</h1>):
+        {cartstate?.total_items==0?
+          (<h1 className="text-center mt5 pt-5">Tu carrito de compras esta vacio</h1>):
 
           (
-            cartstate.products.map((product:ProductCart)=>{
-            return (<CartItem key={product.item.id} product={product} />)
+            cartstate?.line_items.map((product)=>{
+            return (<CartItem key={product.id} product={product} />)
             })
           )
           

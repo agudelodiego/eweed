@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { useContext, useEffect, useState } from "react"
 import { Product } from "@chec/commerce.js/types/product"
-import { CartContext } from "@/context/cart/CartContext"
 
 
 interface Props {
@@ -16,38 +15,14 @@ interface Props {
 const ProductCard = ({product}:Props)=>{
 
   const [clicked, setClicked] = useState(false)
-  const {cartstate,cartdispatch} = useContext(CartContext)
-
-  useEffect(()=>{
-    cartstate.products.forEach((_product)=>{
-      if(_product.item.id == product.id){
-        setClicked(true)
-      }
-    })
-  },[])
+  
 
   const addCart =()=>{
     setClicked(true)
-    cartdispatch({
-      type: "ADD",
-      payload: {
-        item: product,
-        quantity: 1
-      }
-    })
-    console.log("Añadido al carrito")
   }
 
   const deleteCart = ()=>{
     setClicked(false)
-    cartdispatch({
-      type: "REMOVE",
-      payload: {
-        item: product,
-        quantity: 1
-      }
-    })
-    console.log("Removido del carrito de compras")
   }
 
   return(

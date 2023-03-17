@@ -2,9 +2,8 @@ import "@/styles/globals.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import type { AppProps } from "next/app"
 import Head from "next/head"
+import { CartProvider } from "@/context/cart/CartProvider"
 
-//* Contexts for the shoppingCart
-import { CartProvider } from "@/context/cart/CartContext"
 
 
 const App = ({ Component, pageProps }: AppProps) => {
