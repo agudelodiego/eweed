@@ -2,10 +2,6 @@ import { Product } from "@chec/commerce.js/types/product";
 import { useState, useEffect } from "react"; 
 import { commerce } from "@/lib/commerce";
 
-const fetchProducts = async ()=>{
-  let { data } = await commerce.products.list()
-  return data
-}
 
 export const useProducts = ()=>{
   let [products,setProducts] = useState<Product[]>([])
@@ -13,16 +9,27 @@ export const useProducts = ()=>{
   let [error, setError] = useState(false)
 
   useEffect(()=>{
+    getProducts()
+  },[])
 
+  const getProducts = ()=>{
     setLoading(true)
     setError(false)
 
-    fetchProducts()
-      .then((data) => setProducts(data))
-      .catch((error) => setError(error))
+    commerce.products.list()
+      .then(({data}) => {setProducts(data)})
+      .catch((e) => setError(e))
       .finally(() => setLoading(false))
+  } 
 
-  },[])
+  const searchProducts = (query:string)=>{
+    setLoading(true)
+    setError(false)
+    commerce.products.list({query})
+      .then(({data}) => setProducts(data))
+      .catch((e) => setError(error))
+      .finally(() => setLoading(false))
+  }
 
-  return{products, loading, error}
+  return{products, loading, error, getProducts, searchProducts}
 }

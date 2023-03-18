@@ -1,15 +1,12 @@
 import { CartContext } from "@/context/cart/CartProvider"
 import { useContext, useEffect } from "react"
 import CartItem from "./CartItem"
+import CartSummary from "./CartSummary"
 
 
 const Cart = () => {
 
   const {cartstate} = useContext(CartContext)
-
-  useEffect(()=>{
-    console.log(cartstate)
-  },[])
 
   return(
     <>
@@ -19,14 +16,19 @@ const Cart = () => {
       <div className="container d-flex flex-column align-items-center mb-5">
         
         {cartstate?.total_items==0?
-          (<h1 className="text-center mt5 pt-5">Tu carrito de compras esta vacio</h1>):
+          (
+            <h1 className="text-center mt5 pt-5">Tu carrito de compras esta vacio. Vuelve a la pagina principal y añade algun producto</h1>
+          ):
 
           (
-            cartstate?.line_items.map((product)=>{
-            return (<CartItem key={product.id} product={product} />)
+            cartstate?.line_items.map((product) => {
+              return <CartItem key={product.id} product={product} />
             })
           )
-          
+        }
+        { cartstate?.total_items >= 1?
+          (<CartSummary />):
+          ("")
         }
       </div>
     </>

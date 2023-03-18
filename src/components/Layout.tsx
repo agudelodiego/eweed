@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from "react"
+import { ReactNode, useContext, useEffect } from "react"
 import Navdesktop from "./Navdesktop"
 import Styles from "../styles/Layout.module.css"
 import Navmobile from "./Navmobile"

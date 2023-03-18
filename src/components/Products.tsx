@@ -1,22 +1,28 @@
 import ProductCard from "./ProductCard"
 import Style from "../styles/Product.module.css"
 import SearchProduct from "./SearchProduct"
-import { useState, useEffect } from "react"
 import { Product } from "@chec/commerce.js/types/product"
 import { useProducts } from "@/hooks/useProducts"
+import { useState } from "react"
 
 
 const Products = () =>{
 
-  let {products,loading,error} = useProducts()
-  useEffect(()=>{
-    console.log(error)
-  },[error])
+  const {products,loading,getProducts,searchProducts} = useProducts()
+  const [query, setQuery] = useState("")
 
+  const search = (query:string) => {
+    setQuery(query)
+    searchProducts(query)
+  }
+
+  const retrive = ()=>{
+    getProducts()
+  }
 
   return(
     <>
-      <SearchProduct />
+      <SearchProduct search={search} retrive={retrive} />
       {loading?
         (
           <div className="w-100 text-center mt-5">
@@ -28,7 +34,7 @@ const Products = () =>{
         (
           <main className={Style.gallery}>
             {
-              products.map((product:Product)=>{
+              products?.map((product:Product)=>{
                 return(
                   <div className="p-3" key={product.id}>
                     <ProductCard product={product} />
@@ -39,6 +45,10 @@ const Products = () =>{
           </main>
         )
       }
+      {(!products)&&(!loading)?
+      (<h2 className="text-center">Producto <span className="text-success">{query}</span> no encontrado</h2>):
+      ("")
+    }
     </>
     
   )
