@@ -1,4 +1,4 @@
-import Styles from "../styles/SearchProduct.module.css"
+import Styles from "../../styles/SearchProduct.module.css"
 import { faSearchengin } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"

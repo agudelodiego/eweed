@@ -50,6 +50,8 @@ export const CartProvider = ({ children }:Props) => {
       .then((cart) => {setCartState(cart)})
   },[])
 
+  useEffect(()=> console.log(cartstate) ,[cartstate])
+
   const addToCart = async(pid:string,quantity:number)=>{
     let cart = await commerce.cart.add(pid, quantity) as unknown as Cart
     setCartState(cart)

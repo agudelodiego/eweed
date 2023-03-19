@@ -1,9 +1,8 @@
 import { faBars, faInfoCircle, faCircleXmark, faCannabis, faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Nav from "../styles/Navmobile.module.css"
+import Nav from "../../styles/Navmobile.module.css"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import Link from "next/link";
 import { variants } from "@/utils/variants";
 

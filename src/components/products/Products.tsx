@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard"
-import Style from "../styles/Product.module.css"
+import Style from "../../styles/Product.module.css"
 import SearchProduct from "./SearchProduct"
 import { Product } from "@chec/commerce.js/types/product"
 import { useContext} from "react"

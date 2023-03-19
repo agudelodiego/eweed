@@ -1,7 +1,7 @@
 import { CartContext } from "@/context/cart/CartProvider"
 import { useContext } from "react"
 import { motion } from "framer-motion"
-import Styles from "../styles/CartSummary.module.css"
+import Styles from "../../styles/CartSummary.module.css"
 
 const CartSummary = ()=>{
 

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Style from "../styles/ProductCard.module.css"
+import Style from "../../styles/ProductCard.module.css"
 import { faCartPlus, faEye, faCartArrowDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"

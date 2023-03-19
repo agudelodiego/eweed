@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { faCannabis, faCartShopping, faUser, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Nav from "../styles/Navdesktop.module.css"
+import Nav from "../../styles/Navdesktop.module.css"
 
 
 

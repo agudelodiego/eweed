@@ -1,7 +1,7 @@
-import { ReactNode, useContext, useEffect } from "react"
-import Navdesktop from "./Navdesktop"
+import { ReactNode, useContext } from "react"
+import Navdesktop from "./navbar/Navdesktop"
 import Styles from "../styles/Layout.module.css"
-import Navmobile from "./Navmobile"
+import Navmobile from "./navbar/Navmobile"
 import { CartContext } from "@/context/cart/CartProvider"
 
 interface Props {

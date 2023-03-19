@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Styles from "../styles/CartItem.module.css"
+import Styles from "../../styles/CartItem.module.css"
 import { faCirclePlus, faCircleMinus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"

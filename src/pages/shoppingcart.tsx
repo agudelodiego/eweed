@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import Head from "next/head"
-import Cart from "@/components/Cart"
+import Cart from "@/components/shoppingCart/Cart"
 
 
 const Shoppingcart = () =>{

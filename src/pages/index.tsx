@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import Head from "next/head"
-import Products from "@/components/Products"
+import Products from "@/components/products/Products"
 
 const Index = () => {
   return (
