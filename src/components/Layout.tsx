@@ -2,25 +2,22 @@ import { ReactNode, useContext } from "react"
 import Navdesktop from "./navbar/Navdesktop"
 import Styles from "../styles/Layout.module.css"
 import Navmobile from "./navbar/Navmobile"
-import { CartContext } from "@/context/cart/CartProvider"
 
 interface Props {
   children: ReactNode
 }
 
 
-const Layout = ({children}:Props) =>{
-
-  const {cartstate} = useContext(CartContext)  
+const Layout = ({children}:Props) =>{ 
 
   return(
     <>
       <div className={Styles.desk}>
-        <Navdesktop products={cartstate.total_items} />
+        <Navdesktop />
       </div>
       
       <div className={Styles.mobile}>
-        <Navmobile products={cartstate.total_items} />
+        <Navmobile />
       </div>
       
       <div className={Styles.content}>

@@ -2,15 +2,15 @@ import Link from "next/link"
 import { faCannabis, faCartShopping, faUser, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Nav from "../../styles/Navdesktop.module.css"
+import { useContext, useEffect, useState } from "react"
+import { CartContext } from "@/context/cart/CartProvider"
 
 
 
-interface Props {
-  products: number
-}
 
+const Navdesktop = () => {
+  const {totalItems} = useContext(CartContext)
 
-const Navdesktop = ({products}:Props) => {
   return (
     <>
       <nav className={Nav.navbar}>
@@ -28,7 +28,7 @@ const Navdesktop = ({products}:Props) => {
         <div className="d-flex justify-content-center">
           <Link href="/shoppingcart" className={`${Nav.item} ${Nav.cart}`}>
             <FontAwesomeIcon icon={faCartShopping} className={Nav.icon}></FontAwesomeIcon>
-            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-1">{products}</span>
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-1">{totalItems}</span>
           </Link>
           <Link href="/profile" className={Nav.item}>
             <FontAwesomeIcon icon={faUser} className={Nav.icon}></FontAwesomeIcon>

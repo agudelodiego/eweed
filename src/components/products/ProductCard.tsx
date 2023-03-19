@@ -16,24 +16,36 @@ interface Props {
 const ProductCard = ({product}:Props)=>{
 
   const [clicked, setClicked] = useState(false)
-  const {cartstate,addToCart,removeFromCart} = useContext(CartContext)
+  const {cartState, cartDispatch} = useContext(CartContext)
   
   useEffect(()=>{
-    cartstate.line_items.forEach((item)=>{
-      if(item.product_id == product.id){
+    cartState.forEach((item)=>{
+      if(item.product.id == product.id){
         setClicked(true)
       }
     })
-  },[cartstate])
+  },[cartState])
 
   const addCart =()=>{
+    cartDispatch({
+      type:"ADD",
+      payload: {
+        product:product,
+        quantity: 1
+      }
+    })
     setClicked(true)
-    addToCart(product.id, 1)
   }
 
   const deleteCart = ()=>{
+    cartDispatch({
+      type:"REMOVE",
+      payload:{
+        product:product,
+        quantity: 0
+      }
+    })
     setClicked(false)
-    removeFromCart(product.id)
   }
 
   return(

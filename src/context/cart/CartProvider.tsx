@@ -1,89 +1,44 @@
-import { commerce } from "@/lib/commerce";
-import { Cart } from "@chec/commerce.js/types/cart";
-import  { createContext, ReactNode, useEffect, useState } from "react";
-import { cartContextType } from "./types";
+import  { createContext, ReactNode, useEffect, useReducer, useState } from "react";
+import { CartReducer } from "./CartReducer";
+import { CartContextType, CartStateType } from "./types";
 
-
-const initialState: Cart = {
-  id: "",
-  created:0,
-  updated: 0,
-  expires: 0,
-  total_items: 0,
-  total_unique_items: 0,
-  subtotal: {
-    raw: 0,
-    formatted: "",
-    formatted_with_symbol: "",
-    formatted_with_code: ""
-  },
-  currency: {
-    symbol: "",
-    code: ""
-  },
-  discount_code: "",
-  hosted_checkout_url: "",
-  line_items: []
-}
 
 interface Props {
   children: ReactNode
 }
 
+const initialState: CartStateType = []
 
-//* ---> CARTCONTEXT <---
-export const CartContext = createContext<cartContextType>({
-  cartstate: initialState,
-  addToCart: () => null,
-  removeFromCart: () => null,
-  updateQuantity: () => null,
-  emptyCart: () => null
+export const CartContext = createContext<CartContextType>({
+  cartState: initialState,
+  totalItems: 0,
+  subTotal: 0,
+  cartDispatch: () => null
 })
 
+export const CartProvider = ({children}:Props) => {
 
-export const CartProvider = ({ children }:Props) => {
-
-  const [cartstate, setCartState] = useState<Cart>(initialState)
+  const [cartState,cartDispatch] = useReducer(CartReducer,initialState)
+  const [subTotal,setSubTotal] = useState(0)
+  const [totalItems,setTotalItems] =useState(0)
 
   useEffect(()=>{
-    commerce.cart.retrieve()
-      .then((cart) => {setCartState(cart)})
-  },[])
+    setSubTotal(cartState.reduce((accumulator, item) => {
+      let subTotal = item.product.price.raw * item.quantity
+      return accumulator + subTotal
+    },0))
+    setTotalItems(cartState.reduce((accumulator,item)=>{
+      return accumulator + item.quantity
+    },0))
+  },[cartState])
 
-  useEffect(()=> console.log(cartstate) ,[cartstate])
-
-  const addToCart = async(pid:string,quantity:number)=>{
-    let cart = await commerce.cart.add(pid, quantity) as unknown as Cart
-    setCartState(cart)
-  }
-
-  const removeFromCart = async (pid:string)=>{
-    let item= cartstate.line_items.find((item)=>{
-      return item.product_id == pid
-    })
-    let cart = await commerce.cart.remove(item?.id ?? "") as unknown as Cart
-    setCartState(cart)
-  }
-
-  const updateQuantity = async(itemId:string, quantity:number) => {
-    let cart = await commerce.cart.update(itemId,{quantity}) as unknown as Cart
-    setCartState(cart)
-  }
-
-  const emptyCart = async() =>{
-    let cart = await commerce.cart.empty() as unknown as Cart
-    setCartState(cart)
-  }
-
-  return (
-    <CartContext.Provider value={{ 
-      cartstate, 
-      addToCart, 
-      removeFromCart, 
-      updateQuantity, 
-      emptyCart
-    }}>
+  return(
+    <CartContext.Provider value={{
+      cartState,
+      subTotal,
+      totalItems,
+      cartDispatch}}>
       {children}
     </CartContext.Provider>
-  );
-};
+  )
+}

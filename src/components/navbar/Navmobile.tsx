@@ -5,13 +5,16 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import { variants } from "@/utils/variants";
+import { useContext } from "react";
+import { CartContext } from "@/context/cart/CartProvider";
 
-interface Props {
-  products: number
-}
 
-const Navmobile = ({products}:Props)=>{
+
+const Navmobile = ()=>{
   const [ref, inView] = useInView({ threshold: 0 });
+  const {totalItems} = useContext(CartContext)
+
+  
   
   return(
     <>
@@ -19,7 +22,7 @@ const Navmobile = ({products}:Props)=>{
       <Link href="/shoppingcart" legacyBehavior>
         <motion.a whileTap={{scale:0.6}} className={`${Nav.btnCart} ${Nav.item}`}>
           <FontAwesomeIcon icon={faShoppingCart} />
-          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-2">{products}</span>
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-2">{totalItems}</span>
         </motion.a>
       </Link>
       

@@ -5,14 +5,14 @@ import Styles from "../../styles/CartSummary.module.css"
 
 const CartSummary = ()=>{
 
-  const {cartstate, emptyCart} = useContext(CartContext)
+  const {cartState, subTotal, cartDispatch} = useContext(CartContext)
 
   return(
     <div className={Styles.summary_container}>
       <h1 className="text-center text-success">Resumen de la compra</h1>
-      <h4>Total de productos: {cartstate.total_items}</h4>
-      <h4>Total a pagar: {cartstate.subtotal.formatted_with_symbol}</h4>
-      <h4>Tipo de moneda: {cartstate.currency.code}</h4>
+      <h4>Total de productos: {cartState.length}</h4>
+      <h4>Total a pagar: {subTotal} $</h4>
+      <h4>Tipo de moneda:  COP $</h4>
       <motion.button
         whileTap={{scale:0.7}}
         className={Styles.btn_pay}
@@ -22,7 +22,11 @@ const CartSummary = ()=>{
       <motion.button
         whileTap={{scale:0.7}}
         className={Styles.btn_delete}
-        onClick={()=>{emptyCart()}}
+        onClick={()=>{
+          cartDispatch({
+            type:"EMPTY"
+          })
+        }}
       >
         Eliminar carrito
       </motion.button>

@@ -3,30 +3,43 @@ import Styles from "../../styles/CartItem.module.css"
 import { faCirclePlus, faCircleMinus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
-import { LineItem } from "@chec/commerce.js/types/line-item"
 import { useContext } from "react"
 import { CartContext } from "@/context/cart/CartProvider"
+import { cartItem } from "@/context/cart/types"
 
 interface Props{
-  product: LineItem
+  item: cartItem
 }
 
-const CartItem = ({product}:Props) =>{
+const CartItem = ({item}:Props) =>{
 
-  const {updateQuantity,removeFromCart} = useContext(CartContext)
+  const {cartDispatch} = useContext(CartContext)
 
   const incremenQuantity = () => {
-    let quantity = product.quantity + 1
-    updateQuantity(product.id, quantity)
+    cartDispatch({
+      type:"UPDATE",
+      payload:{
+        product: item.product,
+        quantity: item.quantity + 1
+      }
+    })
   }
 
   const decrementQuantity = () => {
-    let quantity = product.quantity - 1
-    updateQuantity(product.id, quantity)
+    cartDispatch({
+      type:"UPDATE",
+      payload:{
+        product: item.product,
+        quantity:item.quantity - 1
+      }
+    })
   }
 
   const removeProduct = () =>{
-    removeFromCart(product.product_id)
+    cartDispatch({
+      type:"REMOVE",
+      payload:item
+    })
   }
 
   return(
@@ -40,19 +53,20 @@ const CartItem = ({product}:Props) =>{
         <FontAwesomeIcon icon={faTrash} className={Styles.trashIcon} />
       </motion.button>
 
-      <Image width={400} height={300} src={product.image?.url??""} alt="Product image" className={Styles.cartItem_image}/>
+      <Image width={400} height={300} src={item.product.image?.url??""} alt="Product image" className={Styles.cartItem_image}/>
 
       <div className={Styles.cartItem_info}>
 
-        <span className={Styles.cartItem_name}>{product.name}</span>
+        <span className={Styles.cartItem_name}>{item.product.name}</span>
 
-        <span>Precio: ${product.price.raw}</span>
+        <span>Precio: ${item.product.price.raw}</span>
 
         <div className="d-flex justify-content-center align-items-center">
 
-          {product.quantity <= 1?
-          (""):
-          (
+          {item.quantity <= 1?
+            ""
+          :
+          
             <motion.button 
               whileTap={{scale:0.6}} 
               className={Styles.cartItem_button}
@@ -60,10 +74,10 @@ const CartItem = ({product}:Props) =>{
             >
               <FontAwesomeIcon icon={faCircleMinus} className={Styles.cartItem_icon} />
             </motion.button>
-          )
+          
           }
           
-          <span>{product.quantity}</span>
+          <span>{item.quantity}</span>
 
           <motion.button 
             whileTap={{scale:0.6}} 
@@ -75,7 +89,7 @@ const CartItem = ({product}:Props) =>{
           
         </div>
 
-        <span>Subtotal:  ${product.price.raw * product.quantity}</span>
+        <span>Subtotal:  ${item.product.price.raw * item.quantity}</span>
 
       </div>
 
