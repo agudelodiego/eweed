@@ -2,23 +2,20 @@ import Styles from "../styles/SearchProduct.module.css"
 import { faSearchengin } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
-import { useProducts } from "@/hooks/useProducts"
+import { useContext, useEffect, useState } from "react"
+import { ProductsContext } from "@/context/products/ProductsProvider"
 
 
-interface Props {
-  search:Function,
-  retrive:Function
-}
 
 
-const SearchProduct = ({search,retrive}:Props)=>{
+const SearchProduct = ()=>{
 
   const [inputValue, setInputValue] = useState("")
+  const {getProducts} = useContext(ProductsContext)
 
   useEffect(()=>{
     if(inputValue == ""){
-      retrive()
+      getProducts()
     }
   },[inputValue])
 
@@ -33,7 +30,7 @@ const SearchProduct = ({search,retrive}:Props)=>{
       <motion.button
         whileTap={{scale:0.6}}
         className={Styles.btnSearch}
-        onClick={()=>{search(inputValue)}}
+        onClick={()=>{getProducts(inputValue)}}
       >
         <FontAwesomeIcon icon={faSearchengin} className={Styles.icon}/>
       </motion.button>

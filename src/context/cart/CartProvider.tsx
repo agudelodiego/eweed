@@ -1,7 +1,6 @@
 import { commerce } from "@/lib/commerce";
-import { RemoveResponse } from "@chec/commerce.js/features/cart";
 import { Cart } from "@chec/commerce.js/types/cart";
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import  { createContext, ReactNode, useEffect, useState } from "react";
 import { cartContextType } from "./types";
 
 
@@ -31,6 +30,8 @@ interface Props {
   children: ReactNode
 }
 
+
+//* ---> CARTCONTEXT <---
 export const CartContext = createContext<cartContextType>({
   cartstate: initialState,
   addToCart: () => null,
