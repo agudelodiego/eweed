@@ -1,0 +1,82 @@
+.progress_container{
+  width: 20rem;
+  height: .7rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  position: relative;
+}
+.progress_fistIconContainer{
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -1.2rem;
+  left: -1px;
+  background-color: var(--white);
+  color: var(--dark-green);
+  
+}
+.progress_secondIconContainer{
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  color: var(--dark-green);
+  position: absolute;
+  top: -1.2rem;
+  left: calc(10rem - 1.5rem);
+}
+.progress_thirdIconContainer{
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  color: var(--dark-green);
+  position: absolute;
+  top: -1.2rem;
+  right: -1px;
+}
+.progress_step{
+  width: 1px;
+  height: .7rem;
+  background-color: var(--dark-green);
+  transition: width .7s;
+}
+.progress_firstStepComplete{
+  width: 10rem;
+}
+.progress_secondStepComplete{
+  width: 20rem;
+}
+.progress_icon{
+  width: 2rem;
+  height: auto;
+}
+.progress_shippingText{
+  position: absolute;
+  top: 2rem;
+  left: -.5rem;
+}
+.progress_paymentText{
+  position: absolute;
+  top: 2rem;
+  left: 8.7rem;
+}
+.progress_confirmationText{
+  position: absolute;
+  top: 2rem;
+  right: -1.5rem; 
+}
+.progress_completed{
+  background-color: var(--dark-green);
+  color: var(--white);
+}

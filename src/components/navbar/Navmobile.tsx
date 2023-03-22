@@ -4,7 +4,7 @@ import Nav from "../../styles/Navmobile.module.css"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { variants } from "@/utils/variants";
+import { navAnimation } from "@/utils/Animations";
 import { useContext } from "react";
 import { CartContext } from "@/context/cart/CartProvider";
 
@@ -47,7 +47,7 @@ const Navmobile = ()=>{
 
           <motion.div
             animate={inView ? "visible" : "hidden"}
-            variants={variants.first}
+            variants={navAnimation.first}
             ref={ref}
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
           >
@@ -61,7 +61,7 @@ const Navmobile = ()=>{
           
           <motion.div
             animate={inView ? "visible" : "hidden"}
-            variants={variants.second}
+            variants={navAnimation.second}
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
           >
             <Link href="/" className={Nav.item}>
@@ -73,7 +73,7 @@ const Navmobile = ()=>{
 
           <motion.div
             animate={inView ? "visible" : "hidden"}
-            variants={variants.third}
+            variants={navAnimation.third}
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
           >
             <Link href="/about" className={Nav.item}>
@@ -85,7 +85,7 @@ const Navmobile = ()=>{
 
           <motion.div
             animate={inView ? "visible" : "hidden"}
-            variants={variants.fourth}
+            variants={navAnimation.fourth}
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
           >
             <Link href="/education" className={Nav.item}>
@@ -97,7 +97,7 @@ const Navmobile = ()=>{
 
           <motion.div
             animate={inView ? "visible" : "hidden"}
-            variants={variants.fifth}
+            variants={navAnimation.fifth}
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
           >
             <Link href="/profile" className={Nav.item}>

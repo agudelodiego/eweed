@@ -1,4 +1,4 @@
-export const variants = {
+export const navAnimation = {
   first:{
     hidden: { 
       opacity: 0, 
@@ -83,4 +83,16 @@ export const variants = {
     },
   }
   
+}
+
+
+export const formAnimation = {
+  initial:{
+    opacity:0,
+    x:-200
+  },
+  final:{
+    opacity:1,
+    x:1
+  }
 }

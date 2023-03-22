@@ -1,14 +1,14 @@
-import Building from "@/components/Building"
 import Layout from "@/components/Layout"
 import Head from "next/head"
+import CheckoutSteper from "@/components/checkout/CheckoutSteper"
 
 const Checkout = () => {
   return(
     <Layout>
       <Head>
-        <title>about</title>
+        <title>checkout</title>
       </Head>
-      <Building name="checkout" />
+      <CheckoutSteper />
     </Layout>
   )
 }

@@ -25,6 +25,13 @@
   color: var(--dark);
   margin-bottom: 20px;
 }
+.link{
+  text-decoration: none;
+  color: var(--white);
+}
+.link:hover{
+  color: var(--white);
+}
 @media screen and (min-width: 1200px){
   .summary_container{
     width: 100%;

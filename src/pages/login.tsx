@@ -1,14 +1,14 @@
-import Building from "@/components/Building"
 import Layout from "@/components/Layout"
 import Head from "next/head"
+import LoginForm from "@/components/forms/LoginForm"
 
 const Login = () => {
   return(
     <Layout>
       <Head>
-        <title>about</title>
+        <title>login</title>
       </Head>
-      <Building name="login" />
+      <LoginForm />
     </Layout>
   )
 }
