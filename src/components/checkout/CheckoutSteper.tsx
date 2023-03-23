@@ -14,7 +14,7 @@ import { useState } from "react"
 
 const CheckoutSteper = ()=>{
 
-  const [step,setStep] = useState(3)
+  const [step,setStep] = useState(1)
 
   return(
     <main className={Styles.form_container}>

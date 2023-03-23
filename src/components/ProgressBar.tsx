@@ -1,14 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { faCheck, faTruckFast, faCreditCard } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Styles from "../styles/ProgressBar.module.css"
+import { motion } from "framer-motion"
 
 interface Props {
   step:number
 }
 
-
 export const ProgressBar = ({step}:Props) => {
+
 
   return(
     <div className={Styles.progress_container}>
@@ -28,7 +29,9 @@ export const ProgressBar = ({step}:Props) => {
       </div>
       <span className={Styles.progress_confirmationText}>Confirmacion</span>
 
-      <div className={`${Styles.progress_step} ${step==2?Styles.progress_firstStepComplete:""} ${step==3?Styles.progress_secondStepComplete:""}`} />
+      {step==1?<motion.div animate={{width:"0"}} className={Styles.progress_step} />:""}
+      {step==2?<motion.div animate={{width:"10rem"}} className={Styles.progress_step} />:""}
+      {step==3?<motion.div animate={{width:"20rem"}} className={Styles.progress_step} />:""}
 
     </div>
   )

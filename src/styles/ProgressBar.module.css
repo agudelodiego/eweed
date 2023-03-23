@@ -51,12 +51,6 @@
   background-color: var(--dark-green);
   transition: width .7s;
 }
-.progress_firstStepComplete{
-  width: 10rem;
-}
-.progress_secondStepComplete{
-  width: 20rem;
-}
 .progress_icon{
   width: 2rem;
   height: auto;
