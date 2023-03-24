@@ -29,11 +29,11 @@
 }
 .select_content{
   padding: .7rem 0;
-  height: 7rem;
-  width: 15rem;
+  height: 0rem;
+  width: 0rem;
+  margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
-  border: 1px solid var(--dark-green);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,6 +42,15 @@
   border-radius: 12px;
   color: var(--white);
   z-index: 100;
+}
+.select_content::-webkit-scrollbar{
+  width: 10px;
+  height: auto;
+}
+.select_content::-webkit-scrollbar-thumb {
+  background-color: var(--light-green);
+  border-radius: 12px;
+  border: 1px solid var(--dark)
 }
 .select_option{
   z-index: 100;
@@ -56,4 +65,13 @@
 }
 .select_option:hover{
   border-bottom: 2px solid var(--white);
+}
+
+@media screen and (min-width:900px){
+  .select_button{
+    width: 20rem;
+  }
+  .select_content{
+    width: 20rem;
+  }
 }

@@ -1,120 +1,85 @@
 import Styles from "../../styles/Form.module.css"
-import { motion } from "framer-motion"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { faUserPlus, faCannabis } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
-
-
-import {formAnimation} from "../../utils/Animations"
-
+import { Form } from "./Form"
+import { InputContainer } from "./InputContainer"
+import { PrimaryBtn } from "./PrimaryBtn"
+import { GoogleBtn } from "./GoogleBtn"
 
 const SignupForm = ()=>{
+
+  const validateData = ()=>{
+    console.log("Ejecucion de signup validate data")
+  }
+
+  const signupWithGoogle = ()=>{
+    console.log("Signup with goggle")
+  }
+
   return(
     <main className={Styles.form_container}>
-      <motion.form
-        initial={{x:1000,opacity:0}}
-        animate={{x:0,opacity:1}}
-        transition={{duration:.3,delay:.2}}
-        className={Styles.form}>
+      <Form>
 
-        <motion.div 
-          initial={formAnimation.initial}
-          animate={formAnimation.final}
-          transition={{delay:.6}}
-    
-          className={Styles.form_brandContainer}>
-          <FontAwesomeIcon icon={faCannabis} className={Styles.form_brandIcon} />
-          <span className={Styles.form_brandText}>Registrar</span>
-        </motion.div>
+        <InputContainer delay={.6}>
+          <div className="d-flex align-items-center">
+            <FontAwesomeIcon icon={faCannabis} className={Styles.form_brandIcon} />
+            <span className={Styles.form_brandText}>Registrar</span>
+          </div>
+        </InputContainer>
 
-
-        <motion.div
-          initial={formAnimation.initial}
-          animate={formAnimation.final}
-          transition={{delay:.8}}
-          className={Styles.form_inputContainer}>
+        <InputContainer delay={.8}>
           <label htmlFor="userName" className={Styles.form_label}>
             Nombre de usuario
           </label>
-          <input type="text" id="userName" className={Styles.form_input} placeholder="ejemploXD" />  
-        </motion.div>
+          <input type="text" id="userName" className={Styles.form_input} placeholder="ejemploXD" />
+        </InputContainer>
 
-
-        <motion.div 
-          initial={formAnimation.initial}
-          animate={formAnimation.final}
-          transition={{delay:1}}
-          className={Styles.form_inputContainer}>
+        <InputContainer delay={1}>
           <label htmlFor="userEmail" className={Styles.form_label}>
             Correo eletronico
           </label>
-          <input type="email" id="userEmail" className={Styles.form_input} placeholder="ejemplo@gmail.com" />  
-        </motion.div>
+          <input type="email" id="userEmail" className={Styles.form_input} placeholder="ejemplo@gmail.com" />
+        </InputContainer>
 
-
-        <motion.div 
-          initial={formAnimation.initial}
-          animate={formAnimation.final}
-          transition={{delay:1.2}}
-          className={Styles.form_inputContainer}>
+        <InputContainer delay={1.2}>
           <label htmlFor="userPassword" className={Styles.form_label}>
             Contraseña
           </label>
-          <input type="password" id="userPassword" className={Styles.form_input} placeholder="**************" />  
-        </motion.div>
+          <input type="password" id="userPassword" className={Styles.form_input} placeholder="**************" />
+        </InputContainer>
 
-        <motion.div 
-          initial={formAnimation.initial}
-          animate={formAnimation.final}
-          transition={{delay:1.4}}
-          className={Styles.form_inputContainer}>
+        <InputContainer delay={1.4}>
           <label htmlFor="userConfirmation" className={Styles.form_label}>
             Confirme su contrasña
           </label>
-          <input type="password" id="userConfirmation" className={Styles.form_input} placeholder="**************" />  
-        </motion.div>
+          <input type="password" id="userConfirmation" className={Styles.form_input} placeholder="**************" />
+        </InputContainer>
 
-        <div className={Styles.form_inputContainer}>
-
-          <motion.button
-            initial={formAnimation.initial}
-            animate={formAnimation.final}
-            transition={{delay:1.6}}
-            whileTap={{scale:0.7}}
-            className={Styles.form_btnSubmit}
-          >
+        <InputContainer delay={1.6}>
+          <PrimaryBtn callback={validateData}>
             <span className={Styles.form_submitText}>
               Registrarse
             </span>
             <FontAwesomeIcon icon={faUserPlus} className={Styles.form_userIcon}/>
-        
-          </motion.button>
+          </PrimaryBtn>
+        </InputContainer>
 
-          <motion.button
-            initial={formAnimation.initial}
-            animate={formAnimation.final}
-            transition={{delay:1.8}}
-            whileTap={{scale:0.7}}
-            className={Styles.form_btnGoogle}
-          >
+        <InputContainer delay={1.8}>
+          <GoogleBtn callback={signupWithGoogle}>
             <FontAwesomeIcon icon={faGoogle} className={Styles.form_googleIcon}/>
             <span className={Styles.form_googleText}>
               Registrar con google
             </span>
-          </motion.button>
+          </GoogleBtn>
+        </InputContainer>
 
-        </div>
-
-        <motion.div 
-          initial={formAnimation.initial}
-          animate={formAnimation.final}
-          transition={{delay:2}}
-          className={Styles.form_inputContainer}>
+        <InputContainer delay={2}>
           <span className="text-center">Ya tienes una cuenta ? <Link href="/login">Ingresar</Link> </span>
-        </motion.div>
+        </InputContainer>
 
-      </motion.form>
+      </Form>
     </main>
   )
 }

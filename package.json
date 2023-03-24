@@ -20,6 +20,7 @@
     "@stripe/stripe-js": "1.48.0",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
+    "@types/react-datepicker": "4.10.0",
     "@types/react-dom": "18.0.11",
     "bootstrap": "5.2.3",
     "eslint": "8.35.0",
@@ -27,6 +28,7 @@
     "framer-motion": "^10.2.3",
     "next": "13.2.3",
     "react": "18.2.0",
+    "react-datepicker": "4.10.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.3",
     "typescript": "4.9.5"

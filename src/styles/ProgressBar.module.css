@@ -4,6 +4,7 @@
   background-color: var(--white);
   border-radius: 8px;
   position: relative;
+  margin: auto;
 }
 .progress_fistIconContainer{
   display: flex;

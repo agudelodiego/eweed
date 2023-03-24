@@ -11,6 +11,7 @@ import { CartContext } from "@/context/cart/CartProvider";
 
 
 const Navmobile = ()=>{
+  
   const [ref, inView] = useInView({ threshold: 0 });
   const {totalItems} = useContext(CartContext)
 
@@ -40,7 +41,6 @@ const Navmobile = ()=>{
           <button type="button" className={Nav.btnClose} data-bs-dismiss="offcanvas" aria-label="Close">
             <FontAwesomeIcon icon={faCircleXmark} className={Nav.close}></FontAwesomeIcon>
           </button>
-
         </div>
 
         <nav className={`offcanvas-body ${Nav.navContainer}`}>
