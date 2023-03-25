@@ -31,7 +31,7 @@ export const ProgressBar = ({step}:Props) => {
 
       {step==1?<motion.div animate={{width:"0"}} className={Styles.progress_step} />:""}
       {step==2?<motion.div animate={{width:"10rem"}} className={Styles.progress_step} />:""}
-      {step==3?<motion.div animate={{width:"20rem"}} className={Styles.progress_step} />:""}
+      {step==3?<motion.div initial={{width:"10rem"}} animate={{width:"20rem"}} className={Styles.progress_step} />:""}
 
     </div>
   )

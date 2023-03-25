@@ -66,7 +66,7 @@ export const PaymentDetailsForm = ({setStep}:Props) => {
           Fecha de expiracion de la targeta:
         </label>
         <div>
-          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className={Styles.form_date} />
+          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className={Styles.form_input} />
         </div>
       </InputContainer>
 

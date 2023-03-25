@@ -10,8 +10,13 @@
 .btn_icon{
   margin: 0;
   padding: 0;
+  color: var(--dark);
   background-color: inherit;
   border: none;
+  transition: color .2s;
+}
+.btn_icon:hover{
+  color: var(--dark-green);
 }
 .imageContainer{
   width: 100%;

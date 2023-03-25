@@ -19,7 +19,7 @@ const CheckoutSteper = ()=>{
 
       {step==1?<ShippingAdressForm setStep={setStep} />:""}
       {step==2?<PaymentDetailsForm setStep={setStep} />:""}
-      {step==3?<Confirmation />:""}
+      {step==3?<Confirmation setStep={setStep} />:""}
       
     </main>
   )

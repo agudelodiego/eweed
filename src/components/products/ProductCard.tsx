@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { useContext, useEffect, useState } from "react"
 import { Product } from "@chec/commerce.js/types/product"
 import { CartContext } from "@/context/cart/CartProvider"
+import Link from "next/link"
 
 
 interface Props {
@@ -84,9 +85,9 @@ const ProductCard = ({product}:Props)=>{
           </motion.div>
           
           <motion.div whileTap={{ scale: 0.4 }}>
-            <button className={Style.btn_icon}>
+            <Link href={"/products/"+product.id} className={Style.btn_icon}>
               <FontAwesomeIcon icon={faEye} className={Style.cartIcon} />
-            </button>
+            </Link>
           </motion.div>
                 
           </div>
