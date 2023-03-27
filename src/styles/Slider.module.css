@@ -12,12 +12,13 @@
 .siler_subImgContainer{
   width: auto;
   height: 10%;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .slider_image{
-  border-radius: 22px;
+  border-radius: 8px;
   width: 80%;
   height: 100%;
   margin: 0;
@@ -51,33 +52,10 @@
 .slider_leftIcon:hover{
   color: var(--dark-green);
 }
-.slider_rightbutton{
-  width: auto;
-  height: auto;
-  color: var(--dark);
-  position: absolute;
-  top: 25vh;
-  right: .5rem;
-  z-index: 20;
-  position: ;
-  margin: 0;
-  padding: 0;
-  border:none;
-  background-color: transparent;
-}
-.slider_leftButton{
-  width: auto;
-  height: auto;
-  color: var(--dark);
-  position: absolute;
-  top: 25vh;
-  left: .5rem;
-  z-index: 20;
-  position: ;
-  margin: 0;
-  padding: 0;
-  border:none;
-  background-color: transparent;
+.slider_subLine{
+  padding:1rem;
+  border-radius: 8px;
+  border-bottom: 3px solid var(--dark-green);
 }
 @media screen and (min-width:900px){
   .slider_leftButton{

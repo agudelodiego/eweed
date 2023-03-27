@@ -40,21 +40,25 @@ export const Slider = ({images}:Props) => {
       </div>
 
       <div className={Styles.siler_subImgContainer}>
-        {subs.map((asset)=>{
-          return(
 
-            <motion.button 
-              whileTap={{scale:.7}}
-              onClick={()=>selectImage(asset.id)}
-              className={Styles.slider_noneButton} 
-              key={asset.id}>
+        <div className={Styles.slider_subLine}>
+          {subs.map((asset)=>{
+            return(
 
-              <Image width={50} height={50} src={asset.url} className={Styles.slider_subImg} alt="Product button" />
+              <motion.button 
+                whileTap={{scale:.7}}
+                onClick={()=>selectImage(asset.id)}
+                className={Styles.slider_noneButton} 
+                key={asset.id}>
 
-            </motion.button>
-            
-          )
-        })}
+                <Image width={50} height={50} src={asset.url} className={Styles.slider_subImg} alt="Product button" />
+
+              </motion.button>
+
+            )
+          })}
+        </div>
+        
       </div>
     </div>
   )
