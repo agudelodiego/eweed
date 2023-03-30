@@ -9,7 +9,7 @@ interface Props {
 
 export const GoogleBtn = ({callback,children}:Props) => {
   return (
-    <motion.div
+    <motion.button
     className={Styles.form_btnGoogle}
     whileTap={{scale:.6}}
     onClick={(e)=>{
@@ -17,6 +17,6 @@ export const GoogleBtn = ({callback,children}:Props) => {
       callback()
     }}>
       {children}
-    </motion.div>
+    </motion.button>
   )
 }

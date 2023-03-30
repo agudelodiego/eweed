@@ -7,16 +7,51 @@ import { Form } from "./Form"
 import { InputContainer } from "./InputContainer"
 import { PrimaryBtn } from "./PrimaryBtn"
 import { GoogleBtn } from "./GoogleBtn"
+import { useContext, useState } from "react"
+import { errorValidator } from "@/utils/firebase"
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { auth } from "@/lib/firebase"
+import { UserContext } from "@/context/user/UserProvider"
+import { useRouter } from "next/router"
 
 
 const LoginForm = ()=>{
 
-  const validateData = ()=>{
-    console.log("Ejecucion del login")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const [error,setError] = useState("")
+  const {setUser} = useContext(UserContext)
+  const router = useRouter()
+
+  const validateData = async()=>{
+    setError("")
+    if(!email || !password){
+      setError("Debes llenar todos los campos para ingresar a la aplicacion")
+    }
+    else{
+      try{
+        let userCredentials = await signInWithEmailAndPassword(auth,email,password)
+        setUser(userCredentials.user)
+        router.push("")
+      }
+      catch(error:any){
+        let message = errorValidator(error.code)
+        setError(message)
+      }
+    }
   }
 
-  const loginWithGoogle = () =>{
-    console.log("Login con google")
+  const loginWithGoogle = async() =>{
+    let provider = new GoogleAuthProvider()
+    try{
+      let userCredentials = await signInWithPopup(auth,provider)
+      setUser(userCredentials.user)
+      router.push("/")
+    }
+    catch(error:any){
+      let message = errorValidator(error.code)
+      setError(message)
+    }
   }
 
   return(
@@ -34,15 +69,19 @@ const LoginForm = ()=>{
           <label htmlFor="userEmail" className={Styles.form_label}>
             Correo eletronico
           </label>
-          <input type="email" id="userEmail" className={Styles.form_input} placeholder="ejemplo@gmail.com" />
+          <input type="email" id="userEmail" className={Styles.form_input} placeholder="ejemplo@gmail.com" onChange={(e)=>{setEmail(e.target.value)}} />
         </InputContainer>
 
         <InputContainer delay={1}>
           <label htmlFor="userPassword" className={Styles.form_label}>
             Contraseña
           </label>
-          <input type="password" id="userPassword" className={Styles.form_input} placeholder="**************" />
+          <input type="password" id="userPassword" className={Styles.form_input} placeholder="**************" onChange={(e)=>{setPassword(e.target.value)}} />
         </InputContainer>
+
+        <div className="text-danger text-center fs-5">
+          {error}
+        </div>
 
         <InputContainer delay={1.2}>
           <PrimaryBtn callback={validateData}>
