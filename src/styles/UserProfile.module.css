@@ -1,8 +1,16 @@
 .profile_container{
   width: 100%;
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100vh);
   display: flex;
   flex-direction: column;
+}
+.profile_noneUser{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .profile_userImageContainer{
   width: 100%;
@@ -44,6 +52,10 @@
 @media screen and (min-width: 900px) {
   .profile_container{
     flex-direction: row;
+    min-height: calc(100vh - 4rem);
+  }
+  .profile_noneUser{
+    height: calc(100vh - 4rem);
   }
   .profile_userImageContainer{
     width: 50%;

@@ -1,6 +1,6 @@
 import { auth } from "@/lib/firebase"
 import { User} from "firebase/auth"
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useEffect, useState } from "react"
 import {UserContextType} from "./types"
 
 
@@ -18,6 +18,12 @@ export const UserContext = createContext<UserContextType>({
 export const UserProvider = ({children}:Props) => {
 
   const [user,setUser] = useState<User | null>(auth.currentUser)
+
+  useEffect(() => {
+    if(auth.currentUser){
+      setUser(auth.currentUser)
+    }
+  }, [auth.currentUser])
 
   return(
     <UserContext.Provider value={{user,setUser}}>

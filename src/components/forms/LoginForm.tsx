@@ -32,10 +32,11 @@ const LoginForm = ()=>{
       try{
         let userCredentials = await signInWithEmailAndPassword(auth,email,password)
         setUser(userCredentials.user)
-        router.push("")
+        router.push("/")
       }
       catch(error:any){
         let message = errorValidator(error.code)
+        setUser(null)
         setError(message)
       }
     }
@@ -50,6 +51,7 @@ const LoginForm = ()=>{
     }
     catch(error:any){
       let message = errorValidator(error.code)
+      setUser(null)
       setError(message)
     }
   }

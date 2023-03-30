@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Styles from "../../styles/CartItem.module.css"
-import { faCirclePlus, faCircleMinus, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faCirclePlus, faCircleMinus, faTrash, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { useContext } from "react"
@@ -72,7 +72,7 @@ const CartItem = ({item}:Props) =>{
               className={Styles.cartItem_button}
               onClick={decrementQuantity}
             >
-              <FontAwesomeIcon icon={faCircleMinus} className={Styles.cartItem_icon} />
+              <FontAwesomeIcon icon={faMinus} className={Styles.cartItem_icon} />
             </motion.button>
           
           }
@@ -84,7 +84,7 @@ const CartItem = ({item}:Props) =>{
             className={Styles.cartItem_button}
             onClick={incremenQuantity}
           >
-            <FontAwesomeIcon icon={faCirclePlus} className={Styles.cartItem_icon} />
+            <FontAwesomeIcon icon={faPlus} className={Styles.cartItem_icon} />
           </motion.button>
           
         </div>
