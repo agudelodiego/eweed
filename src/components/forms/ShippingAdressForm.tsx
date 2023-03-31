@@ -24,7 +24,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
   const [subDivisions, setSubDivisions] = useState<[string,string][]>([])
   const [subDivision, setSubDivision] = useState<[string,string]>(["NI","Ninguno"])
 
-  const [shippingOptions, setShippingOptions] = useState([])
+  const [shippingOptions, setShippingOptions] = useState<[string,string][]>([])
   const [shippinOption, setShippingOption] = useState<[string,string]>(["NI","Ninguno"])
 
 
@@ -56,7 +56,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
       setShippingOption(["NI","Ninguno"])
       commerce.checkout.getShippingOptions(token.id,{country:country[0],region:subDivision[0]})
         .then((res)=>{
-          let mapedResponse = res.map((option)=>{return [option.id , option.description]})
+          let mapedResponse: [string,string][] = res.map((option)=>{return [option.id , option.description]})
           setShippingOptions(mapedResponse)
         })
         .catch((error)=>console.log(error))
