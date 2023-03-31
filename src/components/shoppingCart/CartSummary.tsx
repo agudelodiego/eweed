@@ -6,7 +6,11 @@ import Link from "next/link"
 
 const CartSummary = ()=>{
 
-  const {totalItems, subTotal, cartDispatch} = useContext(CartContext)
+  const {totalItems, subTotal, cartDispatch, initRemoteCart} = useContext(CartContext)
+
+  const initPay = ()=>{
+    initRemoteCart()
+  }
 
   return(
     <div className={Styles.summary_container}>
@@ -17,10 +21,12 @@ const CartSummary = ()=>{
       <motion.button
         whileTap={{scale:0.7}}
         className={Styles.btn_pay}
+        onClick={initPay}
       >
-        <Link href="/checkout" className={Styles.link}>
+        {/* <Link href="/checkout" className={Styles.link}>
           Continuar proceso de compra
-        </Link>
+        </Link> */}
+        Comprar productos
       </motion.button>
       <motion.button
         whileTap={{scale:0.7}}

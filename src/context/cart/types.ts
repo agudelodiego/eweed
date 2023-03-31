@@ -12,7 +12,8 @@ export type CartContextType = {
   cartState: CartStateType,
   totalItems:number,
   subTotal:number
-  cartDispatch: Dispatch<CartActionsType>
+  cartDispatch: Dispatch<CartActionsType>,
+  initRemoteCart: Function
 }
 
 export type CartActionsType = {
