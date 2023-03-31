@@ -1,23 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Styles from "../../styles/Select.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { LocaleListCountriesResponse } from "@chec/commerce.js/features/services"
 
 interface Props {
   label:string,
-  options:string[],
-  defaultValue:string
+  options:[string,string][],
+  selected:[string,string],
+  callback: React.Dispatch<React.SetStateAction<[string, string]>>
 }
 
-const Select = ({label,options,defaultValue}:Props) => {
+const Select = ({label,options,selected,callback}:Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState(defaultValue)
 
-  const handleSelect = (newValue: string) => {
-    setValue(newValue)
+  const handleSelect = (newValue: [string,string]) => {
     setIsOpen(false)
+    callback(newValue)
   }
 
   return (
@@ -35,7 +36,7 @@ const Select = ({label,options,defaultValue}:Props) => {
           <FontAwesomeIcon icon={faChevronDown} className={Styles.select_icon} />
         </span>
         <span className={Styles.select_selected}>
-          {value}
+          {selected[1]}
         </span>
       </motion.button>
 
@@ -52,8 +53,8 @@ const Select = ({label,options,defaultValue}:Props) => {
         {
           options.map((option)=>{
               return (
-                <span key={option} className={Styles.select_option} onClick={()=>{handleSelect(option)}}>
-                  {option}
+                <span key={option[0]} className={Styles.select_option} onClick={()=>{handleSelect(option)}}>
+                  {option[1]}
                 </span>
               )
             }

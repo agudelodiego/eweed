@@ -1,8 +1,9 @@
 .select_container{
   position: relative;
+  width: 15rem;
 }
 .select_button{
-  width: 15rem;
+  width: 100%;
   border: none;
   border-bottom: 2px solid var(--dark-green);
   display: flex;
@@ -30,14 +31,10 @@
 .select_content{
   padding: .7rem 0;
   height: 0rem;
-  width: 0rem;
+  width: 100%;
   margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: var(--dark-green);
   border-radius: 12px;
   color: var(--white);
@@ -55,23 +52,22 @@
 .select_option{
   z-index: 100;
   font-size: 1.2rem;
-  width: 80%;
+  width: 100%;
+  display: block;
   border-radius: 4px;
   text-align: center;
   padding: .3rem 0;
   cursor: pointer;
   border-bottom: 0;
-  transition: all .7s ease;
+  transition: all .2s;
 }
 .select_option:hover{
-  border-bottom: 2px solid var(--white);
+  color: var(--orange);
+  font-size: 1.4rem;
 }
 
 @media screen and (min-width:900px){
-  .select_button{
-    width: 20rem;
-  }
-  .select_content{
+  .select_container{
     width: 20rem;
   }
 }

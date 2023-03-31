@@ -2,14 +2,16 @@ import { CartContext } from "@/context/cart/CartProvider"
 import { useContext } from "react"
 import { motion } from "framer-motion"
 import Styles from "../../styles/CartSummary.module.css"
-import Link from "next/link"
+import { useRouter } from "next/router"
 
 const CartSummary = ()=>{
 
   const {totalItems, subTotal, cartDispatch, initRemoteCart} = useContext(CartContext)
+  const router = useRouter()
 
   const initPay = ()=>{
     initRemoteCart()
+    router.push("/checkout")
   }
 
   return(
@@ -23,9 +25,6 @@ const CartSummary = ()=>{
         className={Styles.btn_pay}
         onClick={initPay}
       >
-        {/* <Link href="/checkout" className={Styles.link}>
-          Continuar proceso de compra
-        </Link> */}
         Comprar productos
       </motion.button>
       <motion.button
