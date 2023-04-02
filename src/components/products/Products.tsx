@@ -2,17 +2,16 @@ import ProductCard from "./ProductCard"
 import Style from "../../styles/Product.module.css"
 import SearchProduct from "./SearchProduct"
 import { Product } from "@chec/commerce.js/types/product"
-import { useContext} from "react"
-import { ProductsContext } from "@/context/products/ProductsProvider"
+import { useProducts } from "@/hooks/useProducts"
 
 
 const Products = () =>{
 
-  const {productsState,loading} = useContext(ProductsContext)
+  const {productsState,loading,getProducts} = useProducts()
   
   return(
     <>
-      <SearchProduct />
+      <SearchProduct getProducts={getProducts} />
       
       {
         loading?

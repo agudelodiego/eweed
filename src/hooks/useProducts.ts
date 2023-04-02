@@ -1,7 +1,6 @@
-import { commerce } from "@/lib/commerce";
-import {productsContextType} from "./types"
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { ProductCollection } from "@chec/commerce.js/features/products";
+import { commerce } from "@/lib/commerce"
+import { ProductCollection } from "@chec/commerce.js/features/products"
+import { useEffect, useState } from "react"
 
 const intitialState:ProductCollection = {
   data: [],
@@ -18,19 +17,7 @@ const intitialState:ProductCollection = {
 }
 
 
-interface Props {
-  children: ReactNode
-}
-
-//* ---> PRODUCTSCONTEXT <---
-export const ProductsContext = createContext<productsContextType>({
-  productsState: intitialState,
-  loading: true,
-  error: false,
-  getProducts: ()=>null
-})
-
-export const ProductsProvider = ({children}:Props) =>{
+export const useProducts = () =>{
 
   const [productsState,setProductsState] = useState(intitialState)
   const [loading,setLoading] = useState(true)
@@ -69,15 +56,10 @@ export const ProductsProvider = ({children}:Props) =>{
     }
   }
 
-  return(
-    <ProductsContext.Provider value={{
-      productsState,
-      loading,
-      error,
-      getProducts
-    }}>
-      {children}
-    </ProductsContext.Provider>
-  )
+  return{
+    productsState,
+    loading,
+    error,
+    getProducts
+  }
 }
-

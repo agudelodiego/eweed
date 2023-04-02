@@ -2,16 +2,17 @@ import Styles from "../../styles/SearchProduct.module.css"
 import { faSearchengin } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
-import { useContext, useEffect, useState } from "react"
-import { ProductsContext } from "@/context/products/ProductsProvider"
+import { useEffect, useState } from "react"
 
 
 
+interface Props {
+ getProducts: (query?: string | undefined) => Promise<void>
+}
 
-const SearchProduct = ()=>{
+const SearchProduct = ({getProducts}:Props) => {
 
   const [inputValue, setInputValue] = useState("")
-  const {getProducts} = useContext(ProductsContext)
 
   useEffect(()=>{
     if(inputValue == ""){
