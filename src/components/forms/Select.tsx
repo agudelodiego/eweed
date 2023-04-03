@@ -50,15 +50,23 @@ const Select = ({label,options,selected,callback}:Props) => {
 
       >
 
-        {
-          options.map((option)=>{
-              return (
-                <span key={option[0]} className={Styles.select_option} onClick={()=>{handleSelect(option)}}>
-                  {option[1]}
-                </span>
-              )
-            }
-          )
+        {options.length > 0?
+          //* if(options)
+            options.map((option)=>{
+                return (
+                  <span key={option[0]} className={Styles.select_option} onClick={()=>{handleSelect(option)}}>
+                    {option[1]}
+                  </span>
+                )
+              }
+            )
+          ://*else
+          <div className="w-100 text-center pt-4">
+            <div className="spinner-border text-white" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
         }
       </motion.div>
 

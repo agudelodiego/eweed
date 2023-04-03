@@ -40,9 +40,10 @@
   color: var(--orange);
   font-size: 1.3rem;
   text-align: center;
+  padding: .3rem 0;
 }
 .cartItem_icon{
-  width: 1.5rem;
+  width: 1rem;
   height: auto;
   color: var(--dark-green);
   margin: 0 1rem;

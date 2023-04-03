@@ -1,4 +1,6 @@
 import { CartContext } from "@/context/cart/CartProvider"
+import { CheckoutContext } from "@/context/checkout/CheckoutProvider"
+import { UserContext } from "@/context/user/UserProvider"
 import { commerce } from "@/lib/commerce"
 import { useContext, useEffect, useState } from "react"
 
@@ -6,6 +8,8 @@ import { useContext, useEffect, useState } from "react"
 export const useShippingAddressForm = (setStep:Function) => {
 
   const {remoteCart, token} = useContext(CartContext)
+  const {shippingInfo ,setShippingInfo} = useContext(CheckoutContext)
+  const {user} = useContext(UserContext)
 
   const [name, setName] = useState("")
   const [nameError,setNameError] = useState<string | false>(false)
@@ -28,9 +32,27 @@ export const useShippingAddressForm = (setStep:Function) => {
   const [subDivisionError, setSubDivisionError] = useState<string | false>(false)
 
   const [shippingOptions, setShippingOptions] = useState<[string,string][]>([])
-  const [shippinOption, setShippingOption] = useState<[string,string]>(["NI","Ninguno"])
-  const [shippinOptionError, setShippingOptionError] = useState<string | false>(false) 
+  const [shippingOption, setShippingOption] = useState<[string,string]>(["NI","Ninguno"])
+  const [shippingOptionError, setShippingOptionError] = useState<string | false>(false) 
 
+  useEffect(()=>{
+    let {name,email,zip,address} = shippingInfo
+    if(name && email && zip && address){
+      setName(name)
+      setEmail(email)
+      setZip(zip)
+      setAddress(address)
+    }
+  },[shippingInfo])
+
+  useEffect(()=>{
+
+    if(user){
+      if(user.displayName) setName(user.displayName)
+      if(user.email) setEmail(user.email)
+    }
+    
+  }, [user])
 
   useEffect(() => {
     if(remoteCart && token){
@@ -98,15 +120,24 @@ export const useShippingAddressForm = (setStep:Function) => {
 
 
   useEffect(()=>{
-    if(shippinOption[0] == "NI") setShippingOptionError("Debes seleccionar la transportadora que entregara tu pedido.")
+    if(shippingOption[0] == "NI") setShippingOptionError("Debes seleccionar la transportadora que entregara tu pedido.")
     else setShippingOptionError(false)
-  },[shippinOption])
+  },[shippingOption])
 
 
   const validateData = ()=>{
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if(name && email && emailRegex.test(email) && zip && address && country[0] != "NI" && subDivision[0] != "NI" && shippinOption[0] != "NI") {
-      console.log("oeeeeee")
+    if(name && email && emailRegex.test(email) && zip && address && country[0] != "NI" && subDivision[0] != "NI" && shippingOption[0] != "NI") {
+      setShippingInfo({
+        name,
+        email,
+        zip,
+        address,
+        country,
+        subDivision,
+        shippingOption
+      })
+      setStep(2)
     }    
   }
 
@@ -129,8 +160,8 @@ export const useShippingAddressForm = (setStep:Function) => {
     subDivisionError,
     setSubDivision,
     shippingOptions,
-    shippinOption,
-    shippinOptionError,
+    shippingOption,
+    shippingOptionError,
     setShippingOption,
     validateData,
     address,

@@ -52,7 +52,6 @@ export const CartProvider = ({children}:Props) => {
         if(i == (cartState.length - 1)){
           setRemoteCard(cart)
           let checkoutToken = await commerce.checkout.generateToken(cart.id, {type:"cart"})
-          console.log(checkoutToken)
           setToken(checkoutToken)
         }
       }

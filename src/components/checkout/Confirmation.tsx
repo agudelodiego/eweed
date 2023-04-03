@@ -12,7 +12,6 @@ interface Props {
 export const Confirmation = ({setStep}:Props) => {
 
   const goBack = ()=>{
-    console.log("Ejecucion de goBack en componente confirmacion")
     setStep(2)
   }
 

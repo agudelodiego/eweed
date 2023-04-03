@@ -19,9 +19,11 @@ export const ShippingAdressForm = ({setStep}:Props) => {
   const {
     setAddress,
     addressError,
+    name,
     setName,
     nameError,
     setEmail,
+    email,
     emailError,
     zipError,
     setZip,
@@ -33,11 +35,13 @@ export const ShippingAdressForm = ({setStep}:Props) => {
     subDivision,
     subDivisionError,
     setSubDivision,
-    shippinOption,
+    shippingOption,
     setShippingOption,
     shippingOptions,
     validateData,
-    shippinOptionError
+    address,
+    zip,
+    shippingOptionError
   } = useShippingAddressForm(setStep)
 
   return (
@@ -51,7 +55,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         <label htmlFor="userName" className={Styles.form_label} >
           Nombre de completo:
         </label>
-        <input type="text" id="userName" className={`${Styles.form_input} ${nameError? "border border-danger" : ""}`} onChange={(e)=>setName(e.target.value)} placeholder="ejemploXD" />  
+        <input type="text" id="userName" className={`${Styles.form_input} ${nameError? "border border-danger" : ""}`} value={name} onChange={(e)=>setName(e.target.value)} placeholder="ejemploXD" />  
         <span className="text-danger text-center">{nameError?nameError:""}</span>
       </InputContainer>
 
@@ -59,7 +63,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         <label htmlFor="userEmail" className={Styles.form_label}>
           Correo eletronico:
         </label>
-        <input type="email" id="userEmail" className={`${Styles.form_input} ${emailError? "border border-danger" : ""}`} onChange={(e)=>setEmail(e.target.value)} placeholder="ejemplo@gmail.com" />
+        <input type="email" id="userEmail" value={email} className={`${Styles.form_input} ${emailError? "border border-danger" : ""}`} onChange={(e)=>setEmail(e.target.value)} placeholder="ejemplo@gmail.com" />
         <span className="text-danger text-center">{emailError?emailError:""}</span>
       </InputContainer>
 
@@ -67,7 +71,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         <label htmlFor="postalCode" className={Styles.form_label}>
           Codigo postal:
         </label>
-        <input type="number" id="postalCode" className={`${Styles.form_input} ${zipError? "border border-danger" : ""}`} onChange={(e)=>setZip(e.target.value)} placeholder="ejemplo: 050005" /> 
+        <input type="number" id="postalCode" value={zip} className={`${Styles.form_input} ${zipError? "border border-danger" : ""}`} onChange={(e)=>setZip(e.target.value)} placeholder="ejemplo: 050005" /> 
         <span className="text-danger text-center">{zipError?zipError:""}</span>
       </InputContainer>
 
@@ -75,7 +79,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         <label htmlFor="address" className={Styles.form_label}>
           Direccion:
         </label>
-        <input type="text" id="address" className={`${Styles.form_input} ${addressError? "border border-danger" : ""}`} onChange={(e)=>setAddress(e.target.value)} placeholder="ejemplo: Cra 52 #57-57"/>
+        <input type="text" id="address" value={address} className={`${Styles.form_input} ${addressError? "border border-danger" : ""}`} onChange={(e)=>setAddress(e.target.value)} placeholder="ejemplo: Cra 52 #57-57"/>
         <span className="text-danger text-center">{addressError?addressError:""}</span>
       </InputContainer>
 
@@ -115,9 +119,9 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         //*if(subDivision && subDivision && shippinOptions)...
         <>
           <InputContainer delay={.3}>
-            <Select label="Empresa" options={shippingOptions} selected={shippinOption} callback={setShippingOption} />
+            <Select label="Empresa" options={shippingOptions} selected={shippingOption} callback={setShippingOption} />
           </InputContainer>
-          <span className="text-danger text-center">{shippinOptionError?shippinOptionError:""}</span>
+          <span className="text-danger text-center">{shippingOptionError?shippingOptionError:""}</span>
         </>
           
 

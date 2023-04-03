@@ -14,10 +14,6 @@ export const UserProfile = () => {
   const {user,setUser} = useContext(UserContext)
   const router = useRouter()
 
-  /* const modifyProfile = ()=>{
-    console.log("ejecucion Update profile")
-  } */ 
-
   const logout = () => {
     setUser(null)
   }

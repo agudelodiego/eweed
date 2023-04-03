@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Styles from "../../styles/CartItem.module.css"
-import { faCirclePlus, faCircleMinus, faTrash, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faTrash, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { useContext } from "react"
@@ -61,7 +61,7 @@ const CartItem = ({item}:Props) =>{
 
         <span>Precio: ${item.product.price.raw}</span>
 
-        <div className="d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-center align-items-center py-1">
 
           {item.quantity <= 1?
             ""
