@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Form } from "./Form"
 import { InputContainer } from "./InputContainer"
 import Styles from "../../styles/Form.module.css"
@@ -9,6 +9,12 @@ import "react-datepicker/dist/react-datepicker.css"
 import { PrimaryBtn } from "./PrimaryBtn"
 import { SecondaryBtn } from "./SecondaryBtn"
 import { usePaymentDetailsForm } from "@/hooks/usePaymentDetailsForm"
+import {Elements, CardElement, useStripe, useElements, CardNumberElement, CardCvcElement, CardExpiryElement} from "@stripe/react-stripe-js"
+import {CreatePaymentMethodData, loadStripe, StripeCardElement} from "@stripe/stripe-js"
+import { CartContext } from "@/context/cart/CartProvider"
+
+
+
 
 interface Props {
   setStep: Function
@@ -16,90 +22,67 @@ interface Props {
 
 export const PaymentDetailsForm = ({setStep}:Props) => {
 
-  const {
-    cardOwner,
-    setCardOwner,
-    cardOwnerError,
+  const {remoteCart} = useContext(CartContext)
+  const [success,setSuccess] = useState<boolean | null>(null)
+  const stripe = useStripe()
+  const elements = useElements()
 
-    cardNumber,
-    setCardNumber,
-    cardNumberError,
+  const pay = async() => {
+    if(stripe && elements){
 
-    securityCode,
-    setSecurityCode,
-    securityCodeError,
+      let cardElement = elements.getElement(CardElement)
+      
+      if(cardElement){
 
-    billingAddress,
-    setBillingAddress,
-    billingAddressError,
 
-    cardExpirationDate,
-    setCardExpirationDate,
-    cardExpirationDateError,
+        let {error, paymentMethod} = await stripe.createPaymentMethod({
+          type:"card",
+          card: cardElement
+        })
 
-    validateData
-  } = usePaymentDetailsForm(setStep)
+        if(error){
+          console.log("Ups ha ocurrido un error")
+          console.log(error)
+        }
+        else{
+          console.log("Sin errores")
+          console.log(paymentMethod)
+        }
+
+      }
+    }
+    console.log("xd")
+  }
+  
 
   const goBack = ()=>{
-    setStep(1)
+    setStep(2)
   }
 
   return (
     <Form>
 
       <InputContainer delay={.6}>
+        <span className="fs-5">Informacion de pago</span>
         <FontAwesomeIcon icon={faCreditCard} className={Styles.form_shippingIcon} />
       </InputContainer>
+
       <InputContainer delay={.8}>
-        <label htmlFor="cardOwner" className={Styles.form_label}>
-          Titular de la targeta:
-        </label>
-        <input type="text" id="cardOwner" value={cardOwner} onChange={(e)=>setCardOwner(e.target.value)} className={`${Styles.form_input} ${cardOwnerError?"border border-danger":""}`} placeholder="ejmplo: Pepito Perez" />
-        <span className="text-danger text-center">{cardOwnerError?cardOwnerError:""}</span>
+        <label htmlFor="customerCard" className={Styles.form_label}>Tarjeta</label>
+        <CardElement id="customerCard" className={`${Styles.inputBorder} col-12 col-md-10 col-lg-8`} />
       </InputContainer>
 
       <InputContainer delay={1}>
-        <label htmlFor="cardCode">
-          Numero de la targeta:
-        </label>
-        <input type="number" value={cardNumber} onChange={(e)=>setCardNumber(e.target.value)} className={`${Styles.form_input} ${cardNumberError?"border border-danger":""}`} placeholder="000000000000" />
-        <span className="text-danger text-cente">{cardNumberError?cardNumberError:""}</span>
-      </InputContainer>
-
-      <InputContainer delay={1.2}>
-        <label htmlFor="securityCode" className={Styles.form_label}>
-          Codigo de seguridad
-        </label>
-        <input type="number" value={securityCode} id="securityCode" className={`${Styles.form_input} ${securityCodeError?"border border-danger":""}`} onChange={(e)=>setSecurityCode(e.target.value)} placeholder="0000" />
-        <span className="text-danger text-cente">{securityCodeError?securityCodeError:""}</span>
-      </InputContainer>
-
-      <InputContainer delay={1.4}>
-        <label htmlFor="billingAddress">
-          Direccion de facturacion
-        </label>
-        <input type="text" value={billingAddress} id="billingAddress" onChange={(e)=>setBillingAddress(e.target.value)} className={`${Styles.form_input} ${billingAddressError?"border border-danger":""}`} placeholder="ejemplo: Cra 52 #57-57" />
-        <span className="text-danger text-cente">{billingAddressError?billingAddressError:""}</span>
-      </InputContainer>
-
-      <InputContainer delay={1.6}>
-        <label htmlFor="" className={Styles.form_label}>
-          Fecha de expiracion de la targeta:
-        </label>
-        <div>
-          <DatePicker selected={cardExpirationDate} onChange={(date) => setCardExpirationDate(date)} className={`${Styles.form_input} ${cardExpirationDateError?"border border-danger":""}`} placeholderText="mes/dia/año"/>
+        <div className="w-100 d-flex justify-content-between align-items-center">
+          <SecondaryBtn callback={goBack}>
+            Atras
+          </SecondaryBtn>
+          <PrimaryBtn callback={pay}>
+            Pagar
+          </PrimaryBtn>
         </div>
-        <span className="text-danger text-cente">{cardExpirationDateError?cardExpirationDateError:""}</span>
       </InputContainer>
 
-      <div className="d-flex align-items-center justify-content-between w-100">
-        <SecondaryBtn callback={goBack}>
-          Atras
-        </SecondaryBtn>
-        <PrimaryBtn callback={validateData}>
-          Siguiente
-        </PrimaryBtn>
-      </div>
-    </Form>
+    </Form>  
   )
 }

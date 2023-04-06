@@ -9,7 +9,6 @@ export const PurchaseSummary = () => {
 
   const {remoteCart} = useContext(CartContext)
 
-
   return (
     <>
       

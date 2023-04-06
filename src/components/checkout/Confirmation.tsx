@@ -12,11 +12,11 @@ interface Props {
 export const Confirmation = ({setStep}:Props) => {
 
   const goBack = ()=>{
-    setStep(2)
+    setStep(1)
   }
 
-  const executePurchase = ()=>{
-    console.log("Ejecucion de execute purchase")
+  const next = ()=>{
+    setStep(3)
   }
 
   return (
@@ -34,8 +34,8 @@ export const Confirmation = ({setStep}:Props) => {
         <SecondaryBtn callback={goBack}>
           Atras
         </SecondaryBtn>
-        <PrimaryBtn callback={executePurchase}>
-          Comprar
+        <PrimaryBtn callback={next}>
+          Siguiente
         </PrimaryBtn>
       </div>
 

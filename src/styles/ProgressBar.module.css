@@ -64,12 +64,12 @@
 .progress_paymentText{
   position: absolute;
   top: 2rem;
-  left: 8.7rem;
+  right: .3rem; 
 }
 .progress_confirmationText{
   position: absolute;
   top: 2rem;
-  right: -1.5rem; 
+  left: 7rem;
 }
 .progress_completed{
   background-color: var(--dark-green);

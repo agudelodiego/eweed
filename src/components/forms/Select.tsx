@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Styles from "../../styles/Select.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
-import { LocaleListCountriesResponse } from "@chec/commerce.js/features/services"
 
 interface Props {
   label:string,
-  options:[string,string][],
-  selected:[string,string],
-  callback: React.Dispatch<React.SetStateAction<[string, string]>>
+  options:[string,string][] | [string,string,string][],
+  selected:[string,string] | [string,string,string],
+  callback: Function
 }
 
 const Select = ({label,options,selected,callback}:Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleSelect = (newValue: [string,string]) => {
+  const handleSelect = (newValue: [string,string] | [string,string,string]) => {
     setIsOpen(false)
     callback(newValue)
   }
@@ -55,7 +54,7 @@ const Select = ({label,options,selected,callback}:Props) => {
             options.map((option)=>{
                 return (
                   <span key={option[0]} className={Styles.select_option} onClick={()=>{handleSelect(option)}}>
-                    {option[1]}
+                    {option[1]}  {option[2]?" - "+option[2]:""}
                   </span>
                 )
               }

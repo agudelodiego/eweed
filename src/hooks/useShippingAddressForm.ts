@@ -31,8 +31,8 @@ export const useShippingAddressForm = (setStep:Function) => {
   const [subDivision, setSubDivision] = useState<[string,string]>(["NI","Ninguno"])
   const [subDivisionError, setSubDivisionError] = useState<string | false>(false)
 
-  const [shippingOptions, setShippingOptions] = useState<[string,string][]>([])
-  const [shippingOption, setShippingOption] = useState<[string,string]>(["NI","Ninguno"])
+  const [shippingOptions, setShippingOptions] = useState<[string,string, string][]>([])
+  const [shippingOption, setShippingOption] = useState<[string, string, string]>(["NI","Ninguno","0"])
   const [shippingOptionError, setShippingOptionError] = useState<string | false>(false) 
 
   useEffect(()=>{
@@ -65,7 +65,7 @@ export const useShippingAddressForm = (setStep:Function) => {
   useEffect(() => {
     if(remoteCart && token && country){
       setSubDivision(["NI","Ninguno"])
-      setShippingOption(["NI","Ninguno"])
+      setShippingOption(["NI","Ninguno","0"])
       setSubDivisions([])
       setShippingOptions([])
       commerce.services.localeListShippingSubdivisions(token.id, country[0])
@@ -81,10 +81,10 @@ export const useShippingAddressForm = (setStep:Function) => {
 
   useEffect(() => {
     if(remoteCart && token && (subDivision[0]!="NI")){
-      setShippingOption(["NI","Ninguno"])
+      setShippingOption(["NI","Ninguno","0"])
       commerce.checkout.getShippingOptions(token.id,{country:country[0],region:subDivision[0]})
         .then((res)=>{
-          let mapedResponse: [string,string][] = res.map((option)=>{return [option.id , option.description]})
+          let mapedResponse: [string, string, string][] = res.map((option)=>{return [option.id , option.description, option.price.formatted_with_code]})
           setShippingOptions(mapedResponse)
         })
         .catch((error)=>console.log(error))

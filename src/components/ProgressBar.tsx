@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { faCheck, faTruckFast, faCreditCard } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Styles from "../styles/ProgressBar.module.css"
@@ -10,7 +10,6 @@ interface Props {
 
 export const ProgressBar = ({step}:Props) => {
 
-
   return(
     <div className={Styles.progress_container}>
 
@@ -18,16 +17,16 @@ export const ProgressBar = ({step}:Props) => {
         <FontAwesomeIcon icon={faTruckFast} className={Styles.progress_icon} />
       </div>
       <span className={Styles.progress_shippingText}>Entrega</span>
-      
-      <div className={`${Styles.progress_secondIconContainer} ${step>=2?Styles.progress_completed:""}`}>
-        <FontAwesomeIcon icon={faCreditCard} className={Styles.progress_icon} />
-      </div>
-      <span className={Styles.progress_paymentText}>Pago</span>
 
-      <div className={`${Styles.progress_thirdIconContainer} ${step>=3?Styles.progress_completed:""}`}>
+      <div className={`${Styles.progress_secondIconContainer} ${step>=2?Styles.progress_completed:""}`}>
         <FontAwesomeIcon icon={faCheck} className={Styles.progress_icon} />
       </div>
       <span className={Styles.progress_confirmationText}>Confirmacion</span>
+
+      <div className={`${Styles.progress_thirdIconContainer} ${step>=3?Styles.progress_completed:""}`}>
+        <FontAwesomeIcon icon={faCreditCard} className={Styles.progress_icon} />
+      </div>
+      <span className={Styles.progress_paymentText}>Pago</span>
 
       {step==1?<motion.div animate={{width:"0"}} className={Styles.progress_step} />:""}
       {step==2?<motion.div animate={{width:"10rem"}} className={Styles.progress_step} />:""}

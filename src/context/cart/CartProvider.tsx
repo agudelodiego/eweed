@@ -40,7 +40,6 @@ export const CartProvider = ({children}:Props) => {
     },0))
   },[cartState])
 
-
   const initRemoteCart = async() => {
     try{
       setRemoteCard(null)

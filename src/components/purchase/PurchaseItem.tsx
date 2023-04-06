@@ -13,7 +13,7 @@ export const PurchaseItem = ({image,name,quantity}:Props) => {
   return (
     <div className={Styles.purchase_itemContainer}>
 
-      <Image width={100} height={100} src={image} alt="Product image" className={Styles.purchase_itemImage}/>
+      <Image width={100} loading="lazy" height={100} src={image} alt="Product image" className={Styles.purchase_itemImage}/>
 
       <span className={Styles.purchase_itemName}>
         {name}

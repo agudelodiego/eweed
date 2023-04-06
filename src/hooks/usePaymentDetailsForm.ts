@@ -76,7 +76,7 @@ export const usePaymentDetailsForm = (setStep:Function) => {
         securityCode,
         billingAddress
       })
-      setStep(3)
+      //setStep(3)
     }
     
     

@@ -4,6 +4,14 @@ import { ProgressBar } from "../ProgressBar"
 import { useState } from "react"
 import { PaymentDetailsForm } from "../forms/PaymentDetailsForm"
 import { Confirmation } from "./Confirmation"
+import { loadStripe } from "@stripe/stripe-js"
+import { Elements } from "@stripe/react-stripe-js"
+
+
+
+//! -----------------------------> STRIPE INTEGRATION <---------------------------------
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK??"")
+//! ------------------------------------------------------------------------------------
 
 
 const CheckoutSteper = ()=>{
@@ -18,8 +26,15 @@ const CheckoutSteper = ()=>{
       </div>
 
       {step==1?<ShippingAdressForm setStep={setStep} />:""}
-      {step==2?<PaymentDetailsForm setStep={setStep} />:""}
-      {step==3?<Confirmation setStep={setStep} />:""}
+      {step==2?<Confirmation setStep={setStep} />:""}
+      {step==3?
+        //*if
+        <Elements stripe={stripePromise}>
+          <PaymentDetailsForm setStep={setStep} />
+        </Elements>
+        
+        //*else
+        :""}
       
     </main>
   )

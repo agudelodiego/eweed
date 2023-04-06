@@ -8,7 +8,7 @@ export type ShippingInfoStateType = {
   address: string | null,
   country: [string,string] | null,
   subDivision: [string,string] | null,
-  shippingOption: [string,string] | null
+  shippingOption: [string, string, string] | null
 }
 
 export type PaymentDetailsStateType = {
