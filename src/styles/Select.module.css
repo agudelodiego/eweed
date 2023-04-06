@@ -5,24 +5,24 @@
 .select_button{
   width: 100%;
   border: none;
-  border-bottom: 2px solid var(--dark-green);
+  border-bottom: 2px solid var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0;
   border-radius: 12px;
-  background-color: var(--light-green);
+  background-color: var(--secondary);
 }
 .select_label{
   width: 100%;
   padding: 0;
-  color: var(--dark-green);
+  color: var(--primary);
 }
 .select_selected{
   padding: 0;
   width: 100%;
-  color: var(--orange);
+  color: var(--tertiary);
 }
 .select_icon{
   width: .8rem;
@@ -35,7 +35,7 @@
   margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: var(--dark-green);
+  background-color: var(--primary);
   border-radius: 12px;
   color: var(--white);
   z-index: 100;
@@ -45,7 +45,7 @@
   height: auto;
 }
 .select_content::-webkit-scrollbar-thumb {
-  background-color: var(--light-green);
+  background-color: var(--secondary);
   border-radius: 12px;
   border: 1px solid var(--dark)
 }
@@ -62,7 +62,7 @@
   transition: all .2s;
 }
 .select_option:hover{
-  color: var(--orange);
+  color: var(--tertiary);
   font-size: 1.4rem;
 }
 

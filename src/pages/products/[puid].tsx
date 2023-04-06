@@ -4,17 +4,9 @@ import { Product } from "@chec/commerce.js/types/product"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { useContext } from "react"
-import Styles from "../../styles/ProductDetail.module.css"
 import Layout from "@/components/Layout"
 import Head from "next/head"
 import { ProductPage } from "@/components/products/ProductPage"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Slider } from "@/components/Slider"
-import striptags from "striptags"
-import { PrimaryBtn } from "@/components/forms/PrimaryBtn"
-import { SecondaryBtn } from "@/components/forms/SecondaryBtn"
-import { motion } from "framer-motion"
-import { faShoppingCart, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
 
 
 const ProductDetails = ()=>{

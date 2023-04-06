@@ -9,7 +9,7 @@
 .gear{
   width: 20vw;
   height: auto;
-  color: var(--dark-green);
+  color: var(--primary);
   margin: 0;
   padding: 0;
 }

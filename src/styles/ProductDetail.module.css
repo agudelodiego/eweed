@@ -13,7 +13,7 @@
   width: 100%;
   height: auto;
   padding-bottom: 2rem;
-  background-color: var(--light-green);
+  background-color: var(--secondary);
   border-radius: 0 0 20px 20px;
 }
 .product_detailsContainer{
@@ -29,7 +29,7 @@
 }
 .product_price{
   font-size: 1.4rem;
-  color: var(--dark-green);
+  color: var(--primary);
 }
 .product_descripton{
   font-size: 1.2rem;
@@ -45,7 +45,7 @@
   width: 5px;
   height: auto;
   border-radius: 5px;
-  background-color: var(--dark-green);
+  background-color: var(--primary);
 }
 
 .product_btn{
@@ -61,7 +61,7 @@
   top: .5rem;
   left: 5rem;
   font-size: 1.7rem;
-  color: var(--orange);
+  color: var(--tertiary);
 }
 .product_cartIcon{
   width: 2rem;
@@ -72,7 +72,7 @@
   width: 1.2rem;
   height: auto;
   margin: 0 2rem;
-  color: var(--dark-green);
+  color: var(--primary);
   cursor: pointer;
 }
 .product_quantityText{
@@ -86,5 +86,6 @@
   .product_imgContainer{
     width: 100vw;
     height: 100%;
+    border-radius: 0;
   }
 }

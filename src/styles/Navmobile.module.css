@@ -5,8 +5,8 @@
   border-radius: 50%;
   width: 4.3rem;
   height: 4.3rem;
-  background-color: var(--dark-green);
-  border: solid var(--dark-green);
+  background-color: var(--primary);
+  border: solid var(--primary);
   position: fixed;
   bottom: 1rem;
   right: 1rem;
@@ -21,9 +21,9 @@
   cursor: pointer;
   width: 4.3rem;
   height: 4.3rem;
-  background-color: var(--dark-green);
+  background-color: var(--primary);
   color: var(--white);
-  border: solid var(--dark-green);
+  border: solid var(--primary);
   position: fixed;
   bottom: 11rem;
   right: 1rem;
@@ -45,11 +45,11 @@
   z-index: 1000;
 }
 .info{
-  color: var(--dark-green);
+  color: var(--primary);
   z-index: 900;
 }
 .nav{
-  background-color: var(--dark-green);
+  background-color: var(--primary);
   color: var(--white);
 }
 .icon{
@@ -58,7 +58,7 @@
 .btnClose{
   width: 3rem;
   height: 3rem;
-  background-color: var(--dark-green);
+  background-color: var(--primary);
   border: none;
   border-radius: 50%;
   padding: 0;

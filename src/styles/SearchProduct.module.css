@@ -4,7 +4,7 @@
 }
 .btnSearch{
   border: none;
-  background-color: var(--dark-green);
+  background-color: var(--primary);
   padding: 3px 1rem;
   border-radius: 12px;
   margin-top: 4rem;

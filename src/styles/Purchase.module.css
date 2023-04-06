@@ -7,8 +7,8 @@
   padding: .5rem;
   margin: 1rem auto;
   border-radius: 12px;
-  border-bottom: 2px solid var(--dark-green);
-  background-color: var(--light-green);
+  border-bottom: 2px solid var(--primary);
+  background-color: var(--secondary);
 }
 .purchase_itemImage{
   border-radius: 12px;
@@ -32,11 +32,11 @@
   padding-right: 2rem;
   margin: 0;
   font-size: 1.5rem;
-  color: var(--orange);
+  color: var(--tertiary);
 }
 .purchase_summaryPrice{
   font-size: 1.3rem;
-  color: var(--orange);
+  color: var(--tertiary);
 }
 .purchase_summaryPriceLable{
   font-size: 1.3rem;

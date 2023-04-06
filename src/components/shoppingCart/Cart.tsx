@@ -10,7 +10,7 @@ const Cart = () => {
 
   return(
     <>
-      <h1 className="mt-5 text-center text-success">
+      <h1 className="mt-5 pt-5 text-center text-success">
         Carrito de compras
       </h1>
       <div className="container d-flex flex-column align-items-center mb-5">

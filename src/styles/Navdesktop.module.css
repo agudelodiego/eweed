@@ -1,5 +1,5 @@
 .navbar{
-  background-color: var(--dark-green);
+  background-color: var(--primary);
   padding: 1rem 3rem;
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@
   align-items: center;
 }
 .item:hover{
-  color: var(--dark);
+  color: var(--tertiary);
 }
 .brand{
   font-size: 1.5rem;
@@ -46,6 +46,6 @@
   z-index: 900;
 }
 .info{
-  color: var(--dark-green);
+  color: var(--primary);
   z-index: 800;
 }

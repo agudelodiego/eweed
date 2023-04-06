@@ -50,12 +50,12 @@
 }
 .slider_rightIcon:hover,
 .slider_leftIcon:hover{
-  color: var(--dark-green);
+  color: var(--primary);
 }
 .slider_subLine{
   padding:1rem;
   border-radius: 8px;
-  border-bottom: 3px solid var(--dark-green);
+  border-bottom: 3px solid var(--primary);
 }
 @media screen and (min-width:900px){
   .slider_leftButton{

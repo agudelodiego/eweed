@@ -1,9 +1,9 @@
 :root{
-  --dark-green: #004c47;
-  --light-green: #e2eceb;
+  --primary: #1D1E20;
+  --secondary: #A9AFBA;
   --dark: #333;
   --white: #fff;
-  --orange: #ed7549;
+  --tertiary: #6E6B59;
   --gray: #DBDBDB;
 }
 
@@ -33,7 +33,7 @@ ul{
   list-style: none;
 }
 .color-orange{
-  color: var(--orange);
+  color: var(--tertiary);
 }
 
 

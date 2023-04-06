@@ -5,7 +5,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--light-green);
+  background-color: var(--secondary);
   border-radius: 12px;
   position: relative;
 }
@@ -21,7 +21,7 @@
 .trashIcon{
   width: 1rem;
   height: auto;
-  color: var(--dark-green);
+  color: var(--primary);
 }
 .cartItem_image{
   width: 6rem;
@@ -37,7 +37,7 @@
   align-items: center;
 }
 .cartItem_name{
-  color: var(--orange);
+  color: var(--tertiary);
   font-size: 1.3rem;
   text-align: center;
   padding: .3rem 0;
@@ -45,7 +45,7 @@
 .cartItem_icon{
   width: 1rem;
   height: auto;
-  color: var(--dark-green);
+  color: var(--primary);
   margin: 0 1rem;
   cursor: pointer;
 }
