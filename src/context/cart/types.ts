@@ -17,7 +17,8 @@ export type CartContextType = {
   remoteCart: Cart | null,
   token: CheckoutToken | null,
   cartDispatch: Dispatch<CartActionsType>,
-  initRemoteCart: Function
+  initRemoteCart: Function,
+  resetCart: Function
 }
 
 export type CartActionsType = {

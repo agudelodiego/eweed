@@ -8,12 +8,14 @@ interface Props {
 
 const shippingInfoInitialState = {
   name: null,
+  lastName: null,
   email: null,
   zip: null,
   address: null,
   country: null,
   subDivision: null,
-  shippingOption: null
+  shippingOption: null,
+  city: null
 }
 
 const PaymentDetailsInitialState = {
@@ -28,7 +30,8 @@ export const CheckoutContext = createContext<checkoutStateType>({
   shippingInfo: shippingInfoInitialState,
   setShippingInfo: () => null,
   paymentDetailsInfo: PaymentDetailsInitialState,
-  setPaymentDetailsInfo: () => null
+  setPaymentDetailsInfo: () => null,
+  resetCheckout: () => null
 })
 
 export const CheckoutProvider = ({children}:Props) => {
@@ -36,12 +39,18 @@ export const CheckoutProvider = ({children}:Props) => {
   const [shippingInfo,setShippingInfo] = useState<ShippingInfoStateType>(shippingInfoInitialState)
   const [paymentDetailsInfo, setPaymentDetailsInfo] = useState<PaymentDetailsStateType>(PaymentDetailsInitialState)
   
+  const resetCheckout = ()=>{
+    setShippingInfo(shippingInfoInitialState)
+    setPaymentDetailsInfo(PaymentDetailsInitialState)
+  }
+
   return(
     <CheckoutContext.Provider value={{
       shippingInfo,
       setShippingInfo,
       paymentDetailsInfo,
-      setPaymentDetailsInfo
+      setPaymentDetailsInfo,
+      resetCheckout
     }}>
       {children}
     </CheckoutContext.Provider>

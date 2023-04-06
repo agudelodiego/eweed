@@ -19,7 +19,8 @@ export const CartContext = createContext<CartContextType>({
   remoteCart: null,
   token: null,
   cartDispatch: () => null,
-  initRemoteCart: () => null
+  initRemoteCart: () => null,
+  resetCart: () => null
 })
 
 export const CartProvider = ({children}:Props) => {
@@ -27,7 +28,7 @@ export const CartProvider = ({children}:Props) => {
   const [cartState,cartDispatch] = useReducer(CartReducer,initialState)
   const [subTotal,setSubTotal] = useState(0)
   const [totalItems,setTotalItems] = useState(0)
-  const [remoteCart,setRemoteCard] = useState<Cart | null>(null)
+  const [remoteCart,setRemoteCart] = useState<Cart | null>(null)
   const [token, setToken] = useState<CheckoutToken | null>(null)
 
   useEffect(()=>{
@@ -42,14 +43,14 @@ export const CartProvider = ({children}:Props) => {
 
   const initRemoteCart = async() => {
     try{
-      setRemoteCard(null)
+      setRemoteCart(null)
       setToken(null)
       await commerce.cart.empty()
       for(let i=0; i<cartState.length; i++){
         let item = cartState[i]
         let cart = await commerce.cart.add(item.product.id, item.quantity) as unknown as Cart
         if(i == (cartState.length - 1)){
-          setRemoteCard(cart)
+          setRemoteCart(cart)
           let checkoutToken = await commerce.checkout.generateToken(cart.id, {type:"cart"})
           setToken(checkoutToken)
         }
@@ -60,6 +61,14 @@ export const CartProvider = ({children}:Props) => {
     }
   }
 
+  const resetCart = () => {
+    cartDispatch({
+      type:"EMPTY"
+    })
+    setRemoteCart(null)
+    setToken(null)
+  }
+
   return(
     <CartContext.Provider value={{
       cartState,
@@ -68,7 +77,8 @@ export const CartProvider = ({children}:Props) => {
       remoteCart,
       token,
       cartDispatch,
-      initRemoteCart}}>
+      initRemoteCart,
+      resetCart}}>
       {children}
     </CartContext.Provider>
   )

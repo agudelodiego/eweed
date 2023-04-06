@@ -14,6 +14,12 @@ export const useShippingAddressForm = (setStep:Function) => {
   const [name, setName] = useState("")
   const [nameError,setNameError] = useState<string | false>(false)
 
+  const [city, setCity] = useState("")
+  const [cityError, setCityError] = useState<string | false>(false)
+
+  const [lastName, setLastName] = useState("")
+  const [lastNameError, setLastNameError] = useState<string | false>(false)
+
   const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState<string | false>(false) 
 
@@ -48,7 +54,6 @@ export const useShippingAddressForm = (setStep:Function) => {
   useEffect(()=>{
 
     if(user){
-      if(user.displayName) setName(user.displayName)
       if(user.email) setEmail(user.email)
     }
     
@@ -98,6 +103,16 @@ export const useShippingAddressForm = (setStep:Function) => {
     if(!name) setNameError("Debes introducir tu nombre.") 
     else setNameError(false)
   },[name])
+
+  useEffect(()=>{
+    if(!lastName) setLastNameError("Debes introducir tu apellido")
+    else setLastNameError(false)
+  },[lastName])
+
+  useEffect(()=>{
+    if(!city) setCityError("Debes introducir la ciudad donde deseas que se entregue el producto.")
+    else setCityError(false)
+  },[city])
   
   useEffect(()=>{
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -130,6 +145,8 @@ export const useShippingAddressForm = (setStep:Function) => {
     if(name && email && emailRegex.test(email) && zip && address && country[0] != "NI" && subDivision[0] != "NI" && shippingOption[0] != "NI") {
       setShippingInfo({
         name,
+        lastName,
+        city,
         email,
         zip,
         address,
@@ -166,6 +183,12 @@ export const useShippingAddressForm = (setStep:Function) => {
     validateData,
     address,
     setAddress,
-    addressError
+    addressError,
+    lastName,
+    lastNameError,
+    setLastName,
+    city,
+    setCity,
+    cityError
   }
 }

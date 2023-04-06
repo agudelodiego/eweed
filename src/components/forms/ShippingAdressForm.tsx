@@ -41,7 +41,13 @@ export const ShippingAdressForm = ({setStep}:Props) => {
     validateData,
     address,
     zip,
-    shippingOptionError
+    shippingOptionError,
+    setLastName,
+    lastName,
+    lastNameError,
+    city,
+    setCity,
+    cityError
   } = useShippingAddressForm(setStep)
 
   return (
@@ -52,14 +58,22 @@ export const ShippingAdressForm = ({setStep}:Props) => {
       </InputContainer>
       
       <InputContainer delay={.8}>
-        <label htmlFor="userName" className={Styles.form_label} >
-          Nombre de completo:
+        <label htmlFor="fistName" className={Styles.form_label} >
+          Nombres:
         </label>
-        <input type="text" id="userName" className={`${Styles.form_input} ${nameError? "border border-danger" : ""}`} value={name} onChange={(e)=>setName(e.target.value)} placeholder="ejemploXD" />  
+        <input type="text" id="fistName" className={`${Styles.form_input} ${nameError? "border border-danger" : ""}`} value={name} onChange={(e)=>setName(e.target.value)} placeholder="ejemploXD" />  
         <span className="text-danger text-center">{nameError?nameError:""}</span>
       </InputContainer>
 
       <InputContainer delay={1}>
+        <label htmlFor="lastName" className={Styles.form_label} >
+          Apellidos:
+        </label>
+        <input type="text" id="lastName" className={`${Styles.form_input} ${lastNameError? "border border-danger" : ""}`} value={lastName} onChange={(e)=>setLastName(e.target.value)} placeholder="ejemploXD" />  
+        <span className="text-danger text-center">{lastNameError?lastNameError:""}</span>
+      </InputContainer>
+
+      <InputContainer delay={1.2}>
         <label htmlFor="userEmail" className={Styles.form_label}>
           Correo eletronico:
         </label>
@@ -67,7 +81,7 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         <span className="text-danger text-center">{emailError?emailError:""}</span>
       </InputContainer>
 
-      <InputContainer delay={1.2}>
+      <InputContainer delay={1.4}>
         <label htmlFor="postalCode" className={Styles.form_label}>
           Codigo postal:
         </label>
@@ -75,12 +89,20 @@ export const ShippingAdressForm = ({setStep}:Props) => {
         <span className="text-danger text-center">{zipError?zipError:""}</span>
       </InputContainer>
 
-      <InputContainer delay={1.4}>
+      <InputContainer delay={1.6}>
         <label htmlFor="address" className={Styles.form_label}>
           Direccion:
         </label>
         <input type="text" id="address" value={address} className={`${Styles.form_input} ${addressError? "border border-danger" : ""}`} onChange={(e)=>setAddress(e.target.value)} placeholder="ejemplo: Cra 52 #57-57"/>
         <span className="text-danger text-center">{addressError?addressError:""}</span>
+      </InputContainer>
+
+      <InputContainer delay={1.8}>
+        <label htmlFor="city" className={Styles.form_label}>
+          Ciudad:
+        </label>
+        <input type="text" id="city" value={city} className={`${Styles.form_input} ${cityError? "border border-danger" : ""}`} onChange={(e)=>setCity(e.target.value)} placeholder="ejemplo: Cra 52 #57-57"/>
+        <span className="text-danger text-center">{cityError?cityError:""}</span>
       </InputContainer>
 
       {contries.length > 0?

@@ -3,9 +3,11 @@ import { Dispatch, SetStateAction } from "react"
 
 export type ShippingInfoStateType = {
   name: string | null,
+  lastName: string | null,
   email: string | null,
   zip: string | null,
   address: string | null,
+  city: string | null,
   country: [string,string] | null,
   subDivision: [string,string] | null,
   shippingOption: [string, string, string] | null
@@ -23,5 +25,6 @@ export type checkoutStateType = {
   shippingInfo: ShippingInfoStateType,
   setShippingInfo: Dispatch<SetStateAction<ShippingInfoStateType>>,
   paymentDetailsInfo: PaymentDetailsStateType,
-  setPaymentDetailsInfo: Dispatch<SetStateAction<PaymentDetailsStateType>>
+  setPaymentDetailsInfo: Dispatch<SetStateAction<PaymentDetailsStateType>>,
+  resetCheckout: Function
 }
