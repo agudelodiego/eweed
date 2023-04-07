@@ -17,8 +17,8 @@ const Navdesktop = () => {
 
         <div className="d-flex justify-content-center">
           <Link href="/" className={Nav.item}>
-            <FontAwesomeIcon icon={faCannabis} className={Nav.icon} />
-            <span className={Nav.brand}>eweed</span>
+            {/* <FontAwesomeIcon icon={faCannabis} className={Nav.icon} /> */}
+            <span className={Nav.brand}>Juvas</span>
           </Link>
           <Link href="/" className={Nav.item}>Productos</Link>
           <Link href="/about" className={Nav.item}>Acerca</Link>

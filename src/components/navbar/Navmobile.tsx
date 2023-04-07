@@ -53,8 +53,8 @@ const Navmobile = ()=>{
           >
             <Link href="/" className={Nav.item}>
               <motion.div whileTap={{scale:0.6}}>
-                <FontAwesomeIcon icon={faCannabis} className={`${Nav.icon} ${Nav.brandIcon}`}></FontAwesomeIcon>
-                <span className={Nav.brandText}>eweed</span>
+                {/* <FontAwesomeIcon icon={faCannabis} className={`${Nav.icon} ${Nav.brandIcon}`} /> */}
+                <span className={Nav.brandText}>Juvas</span>
               </motion.div>
             </Link>
           </motion.div>
